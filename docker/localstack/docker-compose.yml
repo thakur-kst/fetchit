@@ -1,0 +1,71 @@
+version: '3.9'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    restart: unless-stopped
+    ports:
+      - "4566:4566"  # LocalStack Gateway
+      - "4510-4559:4510-4559"  # External services port range
+    environment:
+      SERVICES: secretsmanager
+      DEBUG: ${LOCALSTACK_DEBUG:-0}
+      PERSISTENCE: 1
+      DOCKER_HOST: unix:///var/run/docker.sock
+      AWS_DEFAULT_REGION: ${AWS_SECRETS_MANAGER_REGION:-us-east-1}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-test}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-test}
+      LS_LOG: ${LS_LOG:-info}
+    volumes:
+      - localstack_data:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./init-localstack-secrets.sh:/docker-entrypoint-init.d/init-localstack-secrets.sh:ro
+      - ./manage-localstack-secrets.sh:/docker-entrypoint-init.d/manage-localstack-secrets.sh:ro
+      - ./localstack-startup.sh:/etc/localstack/init/ready.d/01-create-secrets.sh:ro
+      - ../../backend/.env:/var/www/html/.env:ro
+    networks:
+      - api_network
+      - redis_network
+      - postgres_network
+      - soketi_network
+      - keycloak_network
+      - minio_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+        reservations:
+          memory: 128M
+          cpus: '0.125'
+
+volumes:
+  localstack_data:
+    driver: local
+
+networks:
+  api_network:
+    external: true
+    name: api_network
+  redis_network:
+    external: true
+    name: redis_redis_network
+  postgres_network:
+    external: true
+    name: postgres_postgres_network
+  soketi_network:
+    external: true
+    name: soketi_soketi_network
+  keycloak_network:
+    external: true
+    name: keycloak_keycloak_network
+  minio_network:
+    external: true
+    name: minio_minio_network

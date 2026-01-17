@@ -1,0 +1,39 @@
+{
+    "name": "fetchit/db-core",
+    "description": "Centralized database migrations module for FetchIt multi-schema architecture",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "migrations",
+        "database",
+        "postgresql",
+        "schema",
+        "core"
+    ],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FetchIt Development Team"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "laravel/framework": "^12.0",
+        "ext-pgsql": "*",
+        "fetchit/schema-management": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DBCore\\": ""
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\DBCore\\Providers\\DBCoreServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

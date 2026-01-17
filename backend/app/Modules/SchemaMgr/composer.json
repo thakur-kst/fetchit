@@ -1,0 +1,42 @@
+{
+    "name": "fetchit/schema-mgr",
+    "description": "Professional PostgreSQL multi-schema architecture module for Laravel",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "postgresql",
+        "schema",
+        "multi-tenant",
+        "database",
+        "ddd",
+        "architecture"
+    ],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "FetchIt Development Team"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "laravel/framework": "^12.0",
+        "ext-pgsql": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SchemaMgr\\": ""
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\SchemaMgr\\Providers\\SchemaMgrServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

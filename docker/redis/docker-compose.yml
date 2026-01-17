@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: redis
+    restart: unless-stopped
+    command: >
+      sh -c "redis-server
+      --protected-mode no
+      --bind 0.0.0.0
+      --port 6379
+      ${REDIS_PASSWORD:+--requirepass '$REDIS_PASSWORD'}
+      ${REDIS_APPENDONLY:+--appendonly '$REDIS_APPENDONLY'}
+      ${REDIS_MAXMEMORY:+--maxmemory '$REDIS_MAXMEMORY'}
+      ${REDIS_MAXMEMORY_POLICY:+--maxmemory-policy '$REDIS_MAXMEMORY_POLICY'}
+      --dir /data"
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - redis_network
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  redis_network:
+    driver: bridge
+

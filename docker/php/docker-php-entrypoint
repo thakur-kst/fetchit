@@ -1,0 +1,43 @@
+#!/bin/sh
+set -e
+
+# Enable or disable Xdebug based on XDEBUG_ENABLED environment variable
+XDEBUG_CONFIG_PATH="/usr/local/etc/php/conf.d/xdebug.ini"
+XDEBUG_SOURCE="/usr/local/etc/php/conf.d/xdebug.ini.source"
+
+if [ -f "$XDEBUG_SOURCE" ]; then
+    if [ "${XDEBUG_ENABLED:-0}" = "1" ]; then
+        echo "Xdebug: Enabled"
+        # Ensure docker-php-ext-xdebug.ini exists (created by docker-php-ext-enable during build)
+        XDEBUG_EXT_INI="/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
+        if [ ! -f "$XDEBUG_EXT_INI" ]; then
+            echo "zend_extension=xdebug" > "$XDEBUG_EXT_INI"
+        fi
+        
+        # Replace environment variables in xdebug.ini and copy to active location
+        # Handle ${VAR:-default} syntax by extracting the variable name and default
+        CLIENT_HOST="${XDEBUG_CLIENT_HOST:-host.docker.internal}"
+        CLIENT_PORT="${XDEBUG_CLIENT_PORT:-9004}"
+        START_WITH_REQUEST="${XDEBUG_START_WITH_REQUEST:-yes}"
+        IDEKEY="${XDEBUG_IDEKEY:-VSCODE}"
+        
+        sed -e "s|\${XDEBUG_CLIENT_HOST:-host.docker.internal}|${CLIENT_HOST}|g" \
+            -e "s|\${XDEBUG_CLIENT_PORT:-9004}|${CLIENT_PORT}|g" \
+            -e "s|\${XDEBUG_START_WITH_REQUEST:-yes}|${START_WITH_REQUEST}|g" \
+            -e "s|\${XDEBUG_IDEKEY:-VSCODE}|${IDEKEY}|g" \
+            "$XDEBUG_SOURCE" > "$XDEBUG_CONFIG_PATH"
+    else
+        echo "Xdebug: Disabled"
+        # Remove or disable the extension ini file
+        XDEBUG_EXT_INI="/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
+        if [ -f "$XDEBUG_EXT_INI" ]; then
+            mv "$XDEBUG_EXT_INI" "${XDEBUG_EXT_INI}.disabled" 2>/dev/null || true
+        fi
+        # Create empty config file
+        echo "; Xdebug disabled (set XDEBUG_ENABLED=1 to enable)" > "$XDEBUG_CONFIG_PATH"
+    fi
+fi
+
+# Execute the original command (php-fpm)
+exec "$@"
+

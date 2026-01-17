@@ -1,0 +1,4 @@
+# This file keeps the init-scripts directory in git
+# Add your SQL initialization scripts here
+# Files in this directory will be executed in alphabetical order on first database initialization
+

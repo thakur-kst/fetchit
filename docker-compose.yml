@@ -1,0 +1,258 @@
+# =============================================================================
+# FetchIt - Docker Compose Configuration (Local Development)
+# =============================================================================
+# Architecture: Microservices with event-driven components
+# Version: 2.0 (Refactored for Local Development)
+#
+# DEVELOPMENT vs STAGING vs PRODUCTION:
+# - Local Development: Use this file directly - docker compose up -d --build
+#   This file is configured for local development with debugging enabled.
+# - Development (Alternative): Use standalone docker/dev/docker-compose.dev.yml:
+#   docker compose -f docker/dev/docker-compose.dev.yml up -d --build
+# - Staging: Use standalone docker/staging/docker-compose.staging.yml:
+#   docker compose -f docker/staging/docker-compose.staging.yml up -d --build
+#
+# This file (docker-compose.yml) is optimized for local development:
+#   - APP_ENV=local, APP_DEBUG=true (for verbose error reporting)
+#   - Xdebug enabled by default for step debugging
+#   - Development-friendly settings
+#
+# Development files are located in: docker/dev/
+#   - Dockerfile: docker/dev/Dockerfile
+#   - PHP config: docker/dev/php-dev.ini
+#   - Compose file: docker/dev/docker-compose.dev.yml (standalone)
+#   - Documentation: docker/dev/README.md
+#
+# Staging files are located in: docker/staging/
+#   - Dockerfile: docker/staging/Dockerfile
+#   - PHP config: docker/staging/php-staging.ini
+#   - Compose file: docker/staging/docker-compose.staging.yml (standalone)
+#   - Documentation: docker/staging/README.md
+# =============================================================================
+
+x-laravel-common: &laravel-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - ./backend:/var/www/html
+  networks:
+    - api_network
+    - redis_network
+    - postgres_network
+    - soketi_network
+  restart: unless-stopped
+
+# Note: Environment variables are loaded from backend/.env via env_file directive
+# Container-specific overrides can be added in the environment section if needed
+
+x-healthcheck-defaults: &healthcheck-defaults
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 30s
+
+services:
+  # ==========================================================================
+  # Core Application Services
+  # ==========================================================================
+
+  # --------------------------------------------------------------------------
+  # PHP-FPM Application Container (Laravel 12)
+  # --------------------------------------------------------------------------
+  app:
+    <<: *laravel-common
+    container_name: fetchit-app
+    env_file:
+      - ./backend/.env
+    environment:
+      # Local development environment settings
+      APP_ENV: ${APP_ENV:-local}
+      APP_DEBUG: ${APP_DEBUG:-true}
+      # Container-specific overrides using values from backend/.env
+      DB_HOST: ${DB_HOST:-postgres}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DB:-0}
+      REDIS_CACHE_DB: ${REDIS_CACHE_DB:-1}
+      # AWS Secrets Manager (LocalStack for dev)
+      AWS_SECRETS_MANAGER_ENDPOINT: ${AWS_SECRETS_MANAGER_ENDPOINT:-http://localstack:4566}
+      AWS_SECRETS_MANAGER_REGION: ${AWS_SECRETS_MANAGER_REGION:-us-east-1}
+      # Xdebug configuration (enabled by default for local development)
+      XDEBUG_ENABLED: ${XDEBUG_ENABLED:-1}
+      XDEBUG_MODE: ${XDEBUG_MODE:-debug}
+      XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST:-host.docker.internal}
+      XDEBUG_CLIENT_PORT: ${XDEBUG_CLIENT_PORT:-9004}
+      XDEBUG_START_WITH_REQUEST: ${XDEBUG_START_WITH_REQUEST:-yes}
+      XDEBUG_IDEKEY: ${XDEBUG_IDEKEY:-VSCODE}
+    healthcheck:
+      test: ["CMD-SHELL", "php -r 'exit(0);' || exit 1"]
+      <<: *healthcheck-defaults
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '1.0'
+        reservations:
+          memory: 256M
+          cpus: '0.5'
+
+  # ==========================================================================
+  # Queue Processing Services
+  # ==========================================================================
+
+  # --------------------------------------------------------------------------
+  # Queue Worker - Critical & High Priority
+  # Processes: critical, high (time-sensitive jobs)
+  # --------------------------------------------------------------------------
+  queue-critical-high:
+    <<: *laravel-common
+    container_name: fetchit-queue-critical-high
+    command: php artisan queue:work redis --queue=critical,high --verbose --tries=3 --timeout=90
+    env_file:
+      - ./backend/.env
+    environment:
+      # Local development environment settings
+      APP_ENV: ${APP_ENV:-local}
+      APP_DEBUG: ${APP_DEBUG:-true}
+      # Container-specific overrides (service hostnames that differ from .env)
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-redis}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DB:-0}
+      REDIS_CACHE_DB: ${REDIS_CACHE_DB:-1}
+      # AWS Secrets Manager (LocalStack for dev)
+      AWS_SECRETS_MANAGER_ENDPOINT: ${AWS_SECRETS_MANAGER_ENDPOINT:-http://localstack:4566}
+      AWS_SECRETS_MANAGER_REGION: ${AWS_SECRETS_MANAGER_REGION:-us-east-1}
+    depends_on:
+      app:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+  # --------------------------------------------------------------------------
+  # Queue Worker - Medium & Default Priority
+  # Processes: medium, default (standard jobs)
+  # --------------------------------------------------------------------------
+  queue-medium-default:
+    <<: *laravel-common
+    container_name: fetchit-queue-medium-default
+    command: php artisan queue:work redis --queue=medium,default --verbose --tries=3 --timeout=90
+    env_file:
+      - ./backend/.env
+    environment:
+      # Local development environment settings
+      APP_ENV: ${APP_ENV:-local}
+      APP_DEBUG: ${APP_DEBUG:-true}
+      # Container-specific overrides (service hostnames that differ from .env)
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-redis}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DB:-0}
+      REDIS_CACHE_DB: ${REDIS_CACHE_DB:-1}
+      # AWS Secrets Manager (LocalStack for dev)
+      AWS_SECRETS_MANAGER_ENDPOINT: ${AWS_SECRETS_MANAGER_ENDPOINT:-http://localstack:4566}
+      AWS_SECRETS_MANAGER_REGION: ${AWS_SECRETS_MANAGER_REGION:-us-east-1}
+    depends_on:
+      app:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+  # --------------------------------------------------------------------------
+  # Queue Worker - Low Priority
+  # Processes: low (background/batch jobs)
+  # --------------------------------------------------------------------------
+  queue-low:
+    <<: *laravel-common
+    container_name: fetchit-queue-low
+    command: php artisan queue:work redis --queue=low --verbose --tries=3 --timeout=90
+    env_file:
+      - ./backend/.env
+    environment:
+      # Local development environment settings
+      APP_ENV: ${APP_ENV:-local}
+      APP_DEBUG: ${APP_DEBUG:-true}
+      # Container-specific overrides (service hostnames that differ from .env)
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION:-redis}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DB:-0}
+      REDIS_CACHE_DB: ${REDIS_CACHE_DB:-1}
+      # AWS Secrets Manager (LocalStack for dev)
+      AWS_SECRETS_MANAGER_ENDPOINT: ${AWS_SECRETS_MANAGER_ENDPOINT:-http://localstack:4566}
+      AWS_SECRETS_MANAGER_REGION: ${AWS_SECRETS_MANAGER_REGION:-us-east-1}
+    depends_on:
+      app:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+  # --------------------------------------------------------------------------
+  # Laravel Scheduler
+  # Runs scheduled tasks every 60 seconds
+  # --------------------------------------------------------------------------
+  scheduler:
+    <<: *laravel-common
+    container_name: fetchit-scheduler
+    command: sh -c "while :; do php artisan schedule:run --verbose --no-interaction && sleep 60; done"
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_HOST: ${DB_HOST:-postgres}
+    depends_on:
+      app:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  api_network:
+    name: api_network
+    external: true
+  redis_network:
+    external: true
+    name: redis_redis_network
+  postgres_network:
+    external: true
+    name: postgres_postgres_network
+  soketi_network:
+    external: true
+    name: soketi_soketi_network
+
+# =============================================================================
+# Volumes (Persistent Data Storage)
+# =============================================================================
+

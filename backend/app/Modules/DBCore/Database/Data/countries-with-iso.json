@@ -1,0 +1,3155 @@
+[
+  {
+    "name": "AFGHANISTAN",
+    "phone_validations": [
+      {
+        "code": "+93",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "9422",
+    "iso2": "AF",
+    "iso3": "AFG"
+  },
+  {
+    "name": "ALAND ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+358",
+        "lengthRegex": "/^\\b\\d{7,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "68688",
+    "iso2": "AX",
+    "iso3": "ALA"
+  },
+  {
+    "name": "ALBANIA",
+    "phone_validations": [
+      {
+        "code": "+355",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6488",
+    "iso2": "AL",
+    "iso3": "ALB"
+  },
+  {
+    "name": "ALGERIA",
+    "phone_validations": [
+      {
+        "code": "+213",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "68703",
+    "iso2": "DZ",
+    "iso3": "DZA"
+  },
+  {
+    "name": "AMERICAN SAMOA",
+    "phone_validations": [
+      {
+        "code": "+1 684",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "34309",
+    "iso2": "AS",
+    "iso3": "ASM"
+  },
+  {
+    "name": "ANDORRA",
+    "phone_validations": [
+      {
+        "code": "+376",
+        "lengthRegex": null
+      }
+    ],
+    "postcode_regex": "/^[Aa][Dd]\\d{3}$/",
+    "sample_postcode": "AD327",
+    "iso2": "AD",
+    "iso3": "AND"
+  },
+  {
+    "name": "ANGOLA",
+    "phone_validations": [
+      {
+        "code": "+244",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "AO",
+    "iso3": "AGO"
+  },
+  {
+    "name": "ANGUILLA",
+    "phone_validations": [
+      {
+        "code": "+1 264",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(AI-2640)$/",
+    "sample_postcode": "AI-2640",
+    "iso2": "AI",
+    "iso3": "AIA"
+  },
+  {
+    "name": "ANTIGUA AND BARBUDA",
+    "phone_validations": [
+      {
+        "code": "+1 268",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "37148",
+    "iso2": "AG",
+    "iso3": "ATG"
+  },
+  {
+    "name": "ARGENTINA",
+    "phone_validations": [
+      {
+        "code": "+54",
+        "lengthRegex": "/^\\b\\d{10,11}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^([A-Z]{1}\\d{4}[A-Z]{3}|[A-Z]{1}\\d{4}|\\d{4})$/",
+    "sample_postcode": "W3400",
+    "iso2": "AR",
+    "iso3": "ARG"
+  },
+  {
+    "name": "ARMENIA",
+    "phone_validations": [
+      {
+        "code": "+374",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "9812",
+    "iso2": "AM",
+    "iso3": "ARM"
+  },
+  {
+    "name": "ARUBA",
+    "phone_validations": [
+      {
+        "code": "+297",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "AW",
+    "iso3": "ABW"
+  },
+  {
+    "name": "AUSTRALIA",
+    "phone_validations": [
+      {
+        "code": "+61",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "1583",
+    "iso2": "AU",
+    "iso3": "AUS"
+  },
+  {
+    "name": "AUSTRIA",
+    "phone_validations": [
+      {
+        "code": "+43",
+        "lengthRegex": "/^\\b\\d{4,13}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "7218",
+    "iso2": "AT",
+    "iso3": "AUT"
+  },
+  {
+    "name": "AZERBAIJAN",
+    "phone_validations": [
+      {
+        "code": "+994",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(AZ) (\\d{4})$/",
+    "sample_postcode": "AZ 1368",
+    "iso2": "AZ",
+    "iso3": "AZE"
+  },
+  {
+    "name": "BAHAMAS",
+    "phone_validations": [
+      {
+        "code": "+1 242",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BS",
+    "iso3": "BHS"
+  },
+  {
+    "name": "BAHRAIN",
+    "phone_validations": [
+      {
+        "code": "+973",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3}\\d?)$/",
+    "sample_postcode": "1383",
+    "iso2": "BH",
+    "iso3": "BHR"
+  },
+  {
+    "name": "BANGLADESH",
+    "phone_validations": [
+      {
+        "code": "+880",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "7321",
+    "iso2": "BD",
+    "iso3": "BGD"
+  },
+  {
+    "name": "BARBADOS",
+    "phone_validations": [
+      {
+        "code": "+1 246",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[Aa][Zz]\\d{5}$/",
+    "sample_postcode": "AZ66713",
+    "iso2": "BB",
+    "iso3": "BRB"
+  },
+  {
+    "name": "BELARUS",
+    "phone_validations": [
+      {
+        "code": "+375",
+        "lengthRegex": "/^\\b\\d{6,11}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "933549",
+    "iso2": "BY",
+    "iso3": "BLR"
+  },
+  {
+    "name": "BELGIUM",
+    "phone_validations": [
+      {
+        "code": "+32",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "7791",
+    "iso2": "BE",
+    "iso3": "BEL"
+  },
+  {
+    "name": "BELIZE",
+    "phone_validations": [
+      {
+        "code": "+501",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BZ",
+    "iso3": "BLZ"
+  },
+  {
+    "name": "BENIN",
+    "phone_validations": [
+      {
+        "code": "+229",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BJ",
+    "iso3": "BEN"
+  },
+  {
+    "name": "BERMUDA",
+    "phone_validations": [
+      {
+        "code": "+1 441",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^([A-Z]{2} \\d{2})$/",
+    "sample_postcode": "ZL 94",
+    "iso2": "BM",
+    "iso3": "BMU"
+  },
+  {
+    "name": "BHUTAN",
+    "phone_validations": [
+      {
+        "code": "+975",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "93815",
+    "iso2": "BT",
+    "iso3": "BTN"
+  },
+  {
+    "name": "BOLIVIA",
+    "phone_validations": [
+      {
+        "code": "+591",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BO",
+    "iso3": "BOL"
+  },
+  {
+    "name": "BONAIRE, SINT EUSTATIUS AND SABA",
+    "phone_validations": [
+      {
+        "code": "+599",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BQ",
+    "iso3": "BES"
+  },
+  {
+    "name": "BOSNIA AND HERZEGOVINA",
+    "phone_validations": [
+      {
+        "code": "+387",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "55963",
+    "iso2": "BA",
+    "iso3": "BIH"
+  },
+  {
+    "name": "BOTSWANA",
+    "phone_validations": [
+      {
+        "code": "+267",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BW",
+    "iso3": "BWA"
+  },
+  {
+    "name": "BRAZIL",
+    "phone_validations": [
+      {
+        "code": "+55",
+        "lengthRegex": "/^\\b\\d{10,11}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[0-9]{5}-[0-9]{3}$/",
+    "sample_postcode": "09518-100",
+    "iso2": "BR",
+    "iso3": "BRA"
+  },
+  {
+    "name": "BRITISH INDIAN OCEAN TERRITORY",
+    "phone_validations": [
+      {
+        "code": "+246",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(BB9D 1ZZ)$/",
+    "sample_postcode": "BB9D 1ZZ",
+    "iso2": "IO",
+    "iso3": "IOT"
+  },
+  {
+    "name": "BRUNEI DARUSSALAM",
+    "phone_validations": [
+      {
+        "code": "+673",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^([A-Z]{2}\\d{4})$/",
+    "sample_postcode": "CY1606",
+    "iso2": "BN",
+    "iso3": "BRN"
+  },
+  {
+    "name": "BULGARIA",
+    "phone_validations": [
+      {
+        "code": "+359",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2191",
+    "iso2": "BG",
+    "iso3": "BGR"
+  },
+  {
+    "name": "BURKINA FASO",
+    "phone_validations": [
+      {
+        "code": "+226",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BF",
+    "iso3": "BFA"
+  },
+  {
+    "name": "BURUNDI",
+    "phone_validations": [
+      {
+        "code": "+257",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "BI",
+    "iso3": "BDI"
+  },
+  {
+    "name": "CAMBODIA",
+    "phone_validations": [
+      {
+        "code": "+855",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "46276",
+    "iso2": "KH",
+    "iso3": "KHM"
+  },
+  {
+    "name": "CAMEROON",
+    "phone_validations": [
+      {
+        "code": "+237",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "CM",
+    "iso3": "CMR"
+  },
+  {
+    "name": "CANADA",
+    "phone_validations": [
+      {
+        "code": "+1",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] +?[0-9][A-Z][0-9]$/",
+    "sample_postcode": "K1A 0B1",
+    "iso2": "CA",
+    "iso3": "CAN"
+  },
+  {
+    "name": "CANARY ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+34",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "CAPE VERDE",
+    "phone_validations": [
+      {
+        "code": "+238",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "1699",
+    "iso2": "CV",
+    "iso3": "CPV"
+  },
+  {
+    "name": "CAYMAN ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+1 345",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[K][Y][0-9]{1}[-]([0-9]){4}$/",
+    "sample_postcode": "KY5-9113",
+    "iso2": "KY",
+    "iso3": "CYM"
+  },
+  {
+    "name": "CENTRAL AFRICAN REPUBLIC",
+    "phone_validations": [
+      {
+        "code": "+236",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "CF",
+    "iso3": "CAF"
+  },
+  {
+    "name": "CHAD",
+    "phone_validations": [
+      {
+        "code": "+235",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "23438",
+    "iso2": "TD",
+    "iso3": "TCD"
+  },
+  {
+    "name": "CHILE",
+    "phone_validations": [
+      {
+        "code": "+56",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{7})$/",
+    "sample_postcode": "8720019",
+    "iso2": "CL",
+    "iso3": "CHL"
+  },
+  {
+    "name": "CHINA",
+    "phone_validations": [
+      {
+        "code": "+86",
+        "lengthRegex": "/^\\b\\d{10,13}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})/",
+    "sample_postcode": "436101",
+    "iso2": "CN",
+    "iso3": "CHN"
+  },
+  {
+    "name": "CHRISTMAS ISLAND",
+    "phone_validations": [
+      {
+        "code": "+61",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(6978)$/",
+    "sample_postcode": "6978",
+    "iso2": "CX",
+    "iso3": "CXR"
+  },
+  {
+    "name": "COCOS (KEELING) ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+61",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(6799 W3)$/",
+    "sample_postcode": "6799 W3",
+    "iso2": "CC",
+    "iso3": "CCK"
+  },
+  {
+    "name": "COLOMBIA",
+    "phone_validations": [
+      {
+        "code": "+57",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "726175",
+    "iso2": "CO",
+    "iso3": "COL"
+  },
+  {
+    "name": "COMOROS",
+    "phone_validations": [
+      {
+        "code": "+269",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "KM",
+    "iso3": "COM"
+  },
+  {
+    "name": "CONGO",
+    "phone_validations": [
+      {
+        "code": "+242",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "CG",
+    "iso3": "COG"
+  },
+  {
+    "name": "CONGO, THE DEMOCRATIC REPUBLIC",
+    "phone_validations": [
+      {
+        "code": "+243",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "COOK ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+682",
+        "lengthRegex": "/^\\b\\d{5,5}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "CK",
+    "iso3": "COK"
+  },
+  {
+    "name": "COSTA RICA",
+    "phone_validations": [
+      {
+        "code": "+506",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "28820",
+    "iso2": "CR",
+    "iso3": "CRI"
+  },
+  {
+    "name": "CROATIA",
+    "phone_validations": [
+      {
+        "code": "+385",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "86612",
+    "iso2": "HR",
+    "iso3": "HRV"
+  },
+  {
+    "name": "CUBA",
+    "phone_validations": [
+      {
+        "code": "+53",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{5}$/",
+    "sample_postcode": "54533",
+    "iso2": "CU",
+    "iso3": "CUB"
+  },
+  {
+    "name": "CURACAO",
+    "phone_validations": [
+      {
+        "code": "+599",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "CYPRUS",
+    "phone_validations": [
+      {
+        "code": "+357",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2122",
+    "iso2": "CY",
+    "iso3": "CYP"
+  },
+  {
+    "name": "CZECH REPUBLIC, THE",
+    "phone_validations": [
+      {
+        "code": "+420",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[0-9]{3} [0-9]{2}$/",
+    "sample_postcode": "900 96",
+    "iso3": null
+  },
+  {
+    "name": "DENMARK",
+    "phone_validations": [
+      {
+        "code": "+45",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "4499",
+    "iso2": "DK",
+    "iso3": "DNK"
+  },
+  {
+    "name": "DJIBOUTI",
+    "phone_validations": [
+      {
+        "code": "+253",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "DJ",
+    "iso3": "DJI"
+  },
+  {
+    "name": "DOMINICA",
+    "phone_validations": [
+      {
+        "code": "+1 767",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "DM",
+    "iso3": "DMA"
+  },
+  {
+    "name": "DOMINICAN REPUBLIC",
+    "phone_validations": [
+      {
+        "code": "+1 809",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      },
+      {
+        "code": "+1 829",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      },
+      {
+        "code": "+1 849",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "32824",
+    "iso2": "DO",
+    "iso3": "DOM"
+  },
+  {
+    "name": "ECUADOR",
+    "phone_validations": [
+      {
+        "code": "+593",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "93829",
+    "iso2": "EC",
+    "iso3": "ECU"
+  },
+  {
+    "name": "EGYPT",
+    "phone_validations": [
+      {
+        "code": "+20",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "38150",
+    "iso2": "EG",
+    "iso3": "EGY"
+  },
+  {
+    "name": "EL SALVADOR",
+    "phone_validations": [
+      {
+        "code": "+503",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(1101)$/",
+    "sample_postcode": "1101",
+    "iso2": "SV",
+    "iso3": "SLV"
+  },
+  {
+    "name": "EQUATORIAL GUINEA",
+    "phone_validations": [
+      {
+        "code": "+240",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "GQ",
+    "iso3": "GNQ"
+  },
+  {
+    "name": "ERITREA",
+    "phone_validations": [
+      {
+        "code": "+291",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "ER",
+    "iso3": "ERI"
+  },
+  {
+    "name": "ESTONIA",
+    "phone_validations": [
+      {
+        "code": "+372",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "43797",
+    "iso2": "EE",
+    "iso3": "EST"
+  },
+  {
+    "name": "ETHIOPIA",
+    "phone_validations": [
+      {
+        "code": "+251",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2903",
+    "iso2": "ET",
+    "iso3": "ETH"
+  },
+  {
+    "name": "FALKLAND ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+500",
+        "lengthRegex": "/^\\b\\d{5,5}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(FIQQ 1ZZ)$/",
+    "sample_postcode": "FIQQ 1ZZ",
+    "iso3": null
+  },
+  {
+    "name": "FAROE ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+298",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{3}$/",
+    "sample_postcode": "329",
+    "iso2": "FO",
+    "iso3": "FRO"
+  },
+  {
+    "name": "FIJI",
+    "phone_validations": [
+      {
+        "code": "+679",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "FJ",
+    "iso3": "FJI"
+  },
+  {
+    "name": "FINLAND",
+    "phone_validations": [
+      {
+        "code": "+358",
+        "lengthRegex": "/^\\b\\d{5,12}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{5}$/",
+    "sample_postcode": "21964",
+    "iso2": "FI",
+    "iso3": "FIN"
+  },
+  {
+    "name": "FRANCE",
+    "phone_validations": [
+      {
+        "code": "+33",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "83245",
+    "iso2": "FR",
+    "iso3": "FRA"
+  },
+  {
+    "name": "FRENCH GUYANA",
+    "phone_validations": [
+      {
+        "code": "+594",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^((973)\\d{2})$/",
+    "sample_postcode": "97342",
+    "iso3": null
+  },
+  {
+    "name": "FRENCH POLYNESIA",
+    "phone_validations": [
+      {
+        "code": "+689",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^987[0-9]{2}$/",
+    "sample_postcode": "98795",
+    "iso2": "PF",
+    "iso3": "PYF"
+  },
+  {
+    "name": "GABON",
+    "phone_validations": [
+      {
+        "code": "+241",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "GA",
+    "iso3": "GAB"
+  },
+  {
+    "name": "GAMBIA",
+    "phone_validations": [
+      {
+        "code": "+220",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "GM",
+    "iso3": "GMB"
+  },
+  {
+    "name": "GEORGIA",
+    "phone_validations": [
+      {
+        "code": "+995",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2448",
+    "iso2": "GE",
+    "iso3": "GEO"
+  },
+  {
+    "name": "GERMANY",
+    "phone_validations": [
+      {
+        "code": "+49",
+        "lengthRegex": "/^\\b\\d{5,12}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "99667",
+    "iso2": "DE",
+    "iso3": "DEU"
+  },
+  {
+    "name": "GHANA",
+    "phone_validations": [
+      {
+        "code": "+233",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "GH",
+    "iso3": "GHA"
+  },
+  {
+    "name": "GIBRALTAR",
+    "phone_validations": [
+      {
+        "code": "+350",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(GX11 1AA)$/",
+    "sample_postcode": "GX11 1AA",
+    "iso2": "GI",
+    "iso3": "GIB"
+  },
+  {
+    "name": "GREECE",
+    "phone_validations": [
+      {
+        "code": "+30",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3}) \\d{2}$/",
+    "sample_postcode": "048 85",
+    "iso2": "GR",
+    "iso3": "GRC"
+  },
+  {
+    "name": "GREENLAND",
+    "phone_validations": [
+      {
+        "code": "+299",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "4523",
+    "iso2": "GL",
+    "iso3": "GRL"
+  },
+  {
+    "name": "GRENADA",
+    "phone_validations": [
+      {
+        "code": "+1 473",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "GD",
+    "iso3": "GRD"
+  },
+  {
+    "name": "GUADELOUPE",
+    "phone_validations": [
+      {
+        "code": "+590",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^((971)[0-9][0-0])$/",
+    "sample_postcode": "97110",
+    "iso2": "GP",
+    "iso3": "GLP"
+  },
+  {
+    "name": "GUAM",
+    "phone_validations": [
+      {
+        "code": "+1 671",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^((969)[1-3][0-2])$/",
+    "sample_postcode": "96922",
+    "iso2": "GU",
+    "iso3": "GUM"
+  },
+  {
+    "name": "GUATEMALA",
+    "phone_validations": [
+      {
+        "code": "+502",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "73857",
+    "iso2": "GT",
+    "iso3": "GTM"
+  },
+  {
+    "name": "GUERNSEY",
+    "phone_validations": [
+      {
+        "code": "+44",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/((GY)([0-9][0-9A-HJKPS-UW]?|[A-HK-Y][0-9][0-9ABEHMNPRV-Y]?) [0-9][ABD-HJLNP-UW-Z]{2})/",
+    "sample_postcode": "GY02 6HS",
+    "iso2": "GG",
+    "iso3": "GGY"
+  },
+  {
+    "name": "GUINEA REPUBLIC",
+    "phone_validations": [
+      {
+        "code": "+224",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "281",
+    "iso3": null
+  },
+  {
+    "name": "GUINEA-BISSAU",
+    "phone_validations": [
+      {
+        "code": "+245",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6181",
+    "iso2": "GW",
+    "iso3": "GNB"
+  },
+  {
+    "name": "GUYANA (BRITISH)",
+    "phone_validations": [
+      {
+        "code": "+592",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "HAITI",
+    "phone_validations": [
+      {
+        "code": "+509",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "9752",
+    "iso2": "HT",
+    "iso3": "HTI"
+  },
+  {
+    "name": "HEARD ISLAND AND MCDONALD ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+672",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(7151)$/",
+    "sample_postcode": "7151",
+    "iso2": "HM",
+    "iso3": "HMD"
+  },
+  {
+    "name": "HOLY SEE (VATICAN CITY STATE)",
+    "phone_validations": [
+      {
+        "code": "+39",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/00120/",
+    "sample_postcode": "00120",
+    "iso2": "VA",
+    "iso3": "VAT"
+  },
+  {
+    "name": "HONDURAS",
+    "phone_validations": [
+      {
+        "code": "+504",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "72008",
+    "iso2": "HN",
+    "iso3": "HND"
+  },
+  {
+    "name": "HONG KONG",
+    "phone_validations": [
+      {
+        "code": "+852",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(999077)$/",
+    "sample_postcode": "999077",
+    "iso2": "HK",
+    "iso3": "HKG"
+  },
+  {
+    "name": "HUNGARY",
+    "phone_validations": [
+      {
+        "code": "+36",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2454",
+    "iso2": "HU",
+    "iso3": "HUN"
+  },
+  {
+    "name": "ICELAND",
+    "phone_validations": [
+      {
+        "code": "+354",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[1-9][0-9]{5}$/",
+    "sample_postcode": "103",
+    "iso2": "IS",
+    "iso3": "ISL"
+  },
+  {
+    "name": "INDIA",
+    "phone_validations": [
+      {
+        "code": "+91",
+        "lengthRegex": "^\\b\\d{10}\\b$"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "IN",
+    "iso3": "IND"
+  },
+  {
+    "name": "INDONESIA",
+    "phone_validations": [
+      {
+        "code": "+62",
+        "lengthRegex": "/^\\b\\d{7,11}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "47695",
+    "iso2": "ID",
+    "iso3": "IDN"
+  },
+  {
+    "name": "IRAQ",
+    "phone_validations": [
+      {
+        "code": "+964",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "97512",
+    "iso2": "IQ",
+    "iso3": "IRQ"
+  },
+  {
+    "name": "IRELAND",
+    "phone_validations": [
+      {
+        "code": "+353",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "IE",
+    "iso3": "IRL"
+  },
+  {
+    "name": "ISLE OF MAN",
+    "phone_validations": [
+      {
+        "code": "+44",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/((IM)([0-9][0-9A-HJKPS-UW]?|[A-HK-Y][0-9][0-9ABEHMNPRV-Y]?) [0-9][ABD-HJLNP-UW-Z]{2})/",
+    "sample_postcode": "IMD33 0FX",
+    "iso2": "IM",
+    "iso3": "IMN"
+  },
+  {
+    "name": "ISRAEL",
+    "phone_validations": [
+      {
+        "code": "+972",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{7})$/",
+    "sample_postcode": "1029200",
+    "iso2": "IL",
+    "iso3": "ISR"
+  },
+  {
+    "name": "ITALY",
+    "phone_validations": [
+      {
+        "code": "+39",
+        "lengthRegex": "/^\\b\\d{6,11}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "61128",
+    "iso2": "IT",
+    "iso3": "ITA"
+  },
+  {
+    "name": "IVORY COAST",
+    "phone_validations": null,
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "CI",
+    "iso3": "CIV"
+  },
+  {
+    "name": "JAMAICA",
+    "phone_validations": [
+      {
+        "code": "+1 876",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      },
+      {
+        "code": "+1 658",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^((JM)[A-Z]{3})/",
+    "sample_postcode": "JMZLI",
+    "iso2": "JM",
+    "iso3": "JAM"
+  },
+  {
+    "name": "JAPAN",
+    "phone_validations": [
+      {
+        "code": "+81",
+        "lengthRegex": "/^\\b\\d{9,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3}-\\d{4})$/",
+    "sample_postcode": "869-5401",
+    "iso2": "JP",
+    "iso3": "JPN"
+  },
+  {
+    "name": "JERSEY",
+    "phone_validations": [
+      {
+        "code": "+44"
+      }
+    ],
+    "postcode_regex": "(JE)([0-9]\\d{1})",
+    "sample_postcode": "JE31",
+    "iso2": "JE",
+    "iso3": "JEY"
+  },
+  {
+    "name": "JORDAN",
+    "phone_validations": [
+      {
+        "code": "+962",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "35799",
+    "iso2": "JO",
+    "iso3": "JOR"
+  },
+  {
+    "name": "KAZAKHSTAN",
+    "phone_validations": [
+      {
+        "code": "+7",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "836982",
+    "iso2": "KZ",
+    "iso3": "KAZ"
+  },
+  {
+    "name": "KENYA",
+    "phone_validations": [
+      {
+        "code": "+254",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "20115",
+    "iso2": "KE",
+    "iso3": "KEN"
+  },
+  {
+    "name": "KIRIBATI",
+    "phone_validations": [
+      {
+        "code": "+686",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "KI",
+    "iso3": "KIR"
+  },
+  {
+    "name": "KOSOVO",
+    "phone_validations": [
+      {
+        "code": "+383",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "XK",
+    "iso3": "XKK"
+  },
+  {
+    "name": "KUWAIT",
+    "phone_validations": [
+      {
+        "code": "+965",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "13109",
+    "iso2": "KW",
+    "iso3": "KWT"
+  },
+  {
+    "name": "KYRGYZSTAN",
+    "phone_validations": [
+      {
+        "code": "+996",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "642268",
+    "iso2": "KG",
+    "iso3": "KGZ"
+  },
+  {
+    "name": "LAO PEOPLE'S DEMOCRATIC REPUBLIC",
+    "phone_validations": [
+      {
+        "code": "+856",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "90479",
+    "iso2": "LA",
+    "iso3": "LAO"
+  },
+  {
+    "name": "LATVIA",
+    "phone_validations": [
+      {
+        "code": "+371",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[L]{1}[V]{1}[-]([0-9]){4}$/",
+    "sample_postcode": "LV-8778",
+    "iso2": "LV",
+    "iso3": "LVA"
+  },
+  {
+    "name": "LEBANON",
+    "phone_validations": [
+      {
+        "code": "+961",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4}(\\d{4})?)$/",
+    "sample_postcode": "47414362",
+    "iso2": "LB",
+    "iso3": "LBN"
+  },
+  {
+    "name": "LESOTHO",
+    "phone_validations": [
+      {
+        "code": "+266",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "218",
+    "iso2": "LS",
+    "iso3": "LSO"
+  },
+  {
+    "name": "LIBERIA",
+    "phone_validations": [
+      {
+        "code": "+231",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "5492",
+    "iso2": "LR",
+    "iso3": "LBR"
+  },
+  {
+    "name": "LIBYA",
+    "phone_validations": [
+      {
+        "code": "+218",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "43690",
+    "iso2": "LY",
+    "iso3": "LBY"
+  },
+  {
+    "name": "LIECHTENSTEIN",
+    "phone_validations": [
+      {
+        "code": "+423",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "3289",
+    "iso2": "LI",
+    "iso3": "LIE"
+  },
+  {
+    "name": "LITHUANIA",
+    "phone_validations": [
+      {
+        "code": "+370",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "61996",
+    "iso2": "LT",
+    "iso3": "LTU"
+  },
+  {
+    "name": "LUXEMBOURG",
+    "phone_validations": [
+      {
+        "code": "+352",
+        "lengthRegex": "/^\\b\\d{5,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "5832",
+    "iso2": "LU",
+    "iso3": "LUX"
+  },
+  {
+    "name": "MACAU",
+    "phone_validations": [
+      {
+        "code": "+853",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(999078)$/",
+    "sample_postcode": "999078",
+    "iso3": null
+  },
+  {
+    "name": "MACEDONIA",
+    "phone_validations": [
+      {
+        "code": "+389",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "1149",
+    "iso3": null
+  },
+  {
+    "name": "MADAGASCAR",
+    "phone_validations": [
+      {
+        "code": "+261",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "566",
+    "iso2": "MG",
+    "iso3": "MDG"
+  },
+  {
+    "name": "MALAWI",
+    "phone_validations": [
+      {
+        "code": "+265",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "MW",
+    "iso3": "MWI"
+  },
+  {
+    "name": "MALAYSIA",
+    "phone_validations": [
+      {
+        "code": "+60",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "34353",
+    "iso2": "MY",
+    "iso3": "MYS"
+  },
+  {
+    "name": "MALDIVES",
+    "phone_validations": [
+      {
+        "code": "+960",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "24207",
+    "iso2": "MV",
+    "iso3": "MDV"
+  },
+  {
+    "name": "MALI",
+    "phone_validations": [
+      {
+        "code": "+223",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "ML",
+    "iso3": "MLI"
+  },
+  {
+    "name": "MALTA",
+    "phone_validations": [
+      {
+        "code": "+356",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[A-Z]{3} [0-9]{4}$/",
+    "sample_postcode": "BGV 4673",
+    "iso2": "MT",
+    "iso3": "MLT"
+  },
+  {
+    "name": "MARSHALL ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+692",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^((969)[6-7][0-9])$/",
+    "sample_postcode": "96966",
+    "iso2": "MH",
+    "iso3": "MHL"
+  },
+  {
+    "name": "MARTINIQUE",
+    "phone_validations": [
+      {
+        "code": "+596",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "31619",
+    "iso2": "MQ",
+    "iso3": "MTQ"
+  },
+  {
+    "name": "MAURITANIA",
+    "phone_validations": [
+      {
+        "code": "+222",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "MR",
+    "iso3": "MRT"
+  },
+  {
+    "name": "MAURITIUS",
+    "phone_validations": [
+      {
+        "code": "+230",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^([0-9A-Z]\\d{4})$/",
+    "sample_postcode": "66324",
+    "iso2": "MU",
+    "iso3": "MUS"
+  },
+  {
+    "name": "MAYOTTE",
+    "phone_validations": [
+      {
+        "code": "+262",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "80200",
+    "iso2": "YT",
+    "iso3": "MYT"
+  },
+  {
+    "name": "MEXICO",
+    "phone_validations": [
+      {
+        "code": "+52",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "18934",
+    "iso2": "MX",
+    "iso3": "MEX"
+  },
+  {
+    "name": "MICRONESIA, FEDERATED STATES OF",
+    "phone_validations": [
+      {
+        "code": "+691",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "33587",
+    "iso2": "FM",
+    "iso3": "FSM"
+  },
+  {
+    "name": "MOLDOVA",
+    "phone_validations": [
+      {
+        "code": "+373",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[Mm][Dd][- ]{0,1}\\d{4}$/",
+    "sample_postcode": "mD8248",
+    "iso3": null
+  },
+  {
+    "name": "MONACO",
+    "phone_validations": [
+      {
+        "code": "+377",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "39478",
+    "iso2": "MC",
+    "iso3": "MCO"
+  },
+  {
+    "name": "MONGOLIA",
+    "phone_validations": [
+      {
+        "code": "+976",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "67575",
+    "iso2": "MN",
+    "iso3": "MNG"
+  },
+  {
+    "name": "MONTENEGRO",
+    "phone_validations": [
+      {
+        "code": "+382",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "36717",
+    "iso2": "ME",
+    "iso3": "MNE"
+  },
+  {
+    "name": "MONTSERRAT",
+    "phone_validations": [
+      {
+        "code": "+1 664",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[Mm][Ss][Rr]\\s{0,1}\\d{4}$/",
+    "sample_postcode": "Msr 6098",
+    "iso2": "MS",
+    "iso3": "MSR"
+  },
+  {
+    "name": "MOROCCO",
+    "phone_validations": [
+      {
+        "code": "+212",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "10128",
+    "iso2": "MA",
+    "iso3": "MAR"
+  },
+  {
+    "name": "MOZAMBIQUE",
+    "phone_validations": [
+      {
+        "code": "+258",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "5264",
+    "iso2": "MZ",
+    "iso3": "MOZ"
+  },
+  {
+    "name": "MYANMAR",
+    "phone_validations": [
+      {
+        "code": "+95",
+        "lengthRegex": "/^\\b\\d{7,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "32989",
+    "iso2": "MM",
+    "iso3": "MMR"
+  },
+  {
+    "name": "NAMIBIA",
+    "phone_validations": [
+      {
+        "code": "+264",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "NA",
+    "iso3": "NAM"
+  },
+  {
+    "name": "NAURU, REPUBLIC OF",
+    "phone_validations": [
+      {
+        "code": "+674",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "NEPAL",
+    "phone_validations": [
+      {
+        "code": "+977",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "60091",
+    "iso2": "NP",
+    "iso3": "NPL"
+  },
+  {
+    "name": "NETHERLANDS",
+    "phone_validations": [
+      {
+        "code": "+31",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/[0-9]{4} [A-Z]{2}/",
+    "sample_postcode": "2326 YH",
+    "iso2": "NL",
+    "iso3": "NLD"
+  },
+  {
+    "name": "NEW CALEDONIA",
+    "phone_validations": [
+      {
+        "code": "+687",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "66824",
+    "iso2": "NC",
+    "iso3": "NCL"
+  },
+  {
+    "name": "NEW ZEALAND",
+    "phone_validations": [
+      {
+        "code": "+64",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6881",
+    "iso2": "NZ",
+    "iso3": "NZL"
+  },
+  {
+    "name": "NICARAGUA",
+    "phone_validations": [
+      {
+        "code": "+505",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "39747",
+    "iso2": "NI",
+    "iso3": "NIC"
+  },
+  {
+    "name": "NIGER",
+    "phone_validations": [
+      {
+        "code": "+227",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "2150",
+    "iso2": "NE",
+    "iso3": "NER"
+  },
+  {
+    "name": "NIGERIA",
+    "phone_validations": [
+      {
+        "code": "+234",
+        "lengthRegex": "/^\\b\\d{7,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "686296",
+    "iso2": "NG",
+    "iso3": "NGA"
+  },
+  {
+    "name": "NIUE",
+    "phone_validations": [
+      {
+        "code": "+683",
+        "lengthRegex": "/^\\b\\d{4,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "NU",
+    "iso3": "NIU"
+  },
+  {
+    "name": "NORFOLK ISLAND",
+    "phone_validations": [
+      {
+        "code": "+672",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(2899)$/",
+    "sample_postcode": "2899",
+    "iso2": "NF",
+    "iso3": "NFK"
+  },
+  {
+    "name": "NORWAY",
+    "phone_validations": [
+      {
+        "code": "+47",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6842",
+    "iso2": "NO",
+    "iso3": "NOR"
+  },
+  {
+    "name": "OMAN",
+    "phone_validations": [
+      {
+        "code": "+968",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "721",
+    "iso2": "OM",
+    "iso3": "OMN"
+  },
+  {
+    "name": "PAKISTAN",
+    "phone_validations": [
+      {
+        "code": "+92",
+        "lengthRegex": "/^\\b\\d{9,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "50053",
+    "iso2": "PK",
+    "iso3": "PAK"
+  },
+  {
+    "name": "PALAU",
+    "phone_validations": [
+      {
+        "code": "+680",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(96940)$/",
+    "sample_postcode": "96940",
+    "iso2": "PW",
+    "iso3": "PLW"
+  },
+  {
+    "name": "PALESTENIAN TERRITORY, OCCUPIED",
+    "phone_validations": [
+      {
+        "code": "+970",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "^(\\d{5})$",
+    "sample_postcode": "62451",
+    "iso3": null
+  },
+  {
+    "name": "PANAMA",
+    "phone_validations": [
+      {
+        "code": "+507",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "PA",
+    "iso3": "PAN"
+  },
+  {
+    "name": "PAPUA NEW GUINEA",
+    "phone_validations": [
+      {
+        "code": "+675",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "452",
+    "iso2": "PG",
+    "iso3": "PNG"
+  },
+  {
+    "name": "PARAGUAY",
+    "phone_validations": [
+      {
+        "code": "+595",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "4318",
+    "iso2": "PY",
+    "iso3": "PRY"
+  },
+  {
+    "name": "PERU",
+    "phone_validations": [
+      {
+        "code": "+51",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "29016",
+    "iso2": "PE",
+    "iso3": "PER"
+  },
+  {
+    "name": "PHILIPPINES",
+    "phone_validations": [
+      {
+        "code": "+63",
+        "lengthRegex": "/^\\b\\d{9,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "7784",
+    "iso2": "PH",
+    "iso3": "PHL"
+  },
+  {
+    "name": "PITCAIRN",
+    "phone_validations": [
+      {
+        "code": "+64",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(PCR9 1ZZ)$/",
+    "sample_postcode": "PCR9 1ZZ",
+    "iso2": "PN",
+    "iso3": "PCN"
+  },
+  {
+    "name": "POLAND",
+    "phone_validations": [
+      {
+        "code": "+48",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^[0-9]{2}[-]([0-9]){3}$/",
+    "sample_postcode": "15-795",
+    "iso2": "PL",
+    "iso3": "POL"
+  },
+  {
+    "name": "PORTUGAL",
+    "phone_validations": [
+      {
+        "code": "+351",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{4}((-|\\s)?\\d{3})?$/",
+    "sample_postcode": "2329613",
+    "iso2": "PT",
+    "iso3": "PRT"
+  },
+  {
+    "name": "PUERTO RICO",
+    "phone_validations": [
+      {
+        "code": "+1 787",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      },
+      {
+        "code": "+1 939",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{5}((-|\\s)?\\d{4})?$/",
+    "sample_postcode": "81729 7050",
+    "iso2": "PR",
+    "iso3": "PRI"
+  },
+  {
+    "name": "QATAR",
+    "phone_validations": [
+      {
+        "code": "+974",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "QA",
+    "iso3": "QAT"
+  },
+  {
+    "name": "REUNION, ISLAND OF",
+    "phone_validations": [
+      {
+        "code": "+262",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/[9]{1}[7|8][4|7|8]\\d{2}/",
+    "sample_postcode": "98|02",
+    "iso3": null
+  },
+  {
+    "name": "ROMANIA",
+    "phone_validations": [
+      {
+        "code": "+40",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "515100",
+    "iso2": "RO",
+    "iso3": "ROU"
+  },
+  {
+    "name": "RWANDA",
+    "phone_validations": [
+      {
+        "code": "+250",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "RW",
+    "iso3": "RWA"
+  },
+  {
+    "name": "SAINT HELENA",
+    "phone_validations": [
+      {
+        "code": "+290",
+        "lengthRegex": "/^\\b\\d{5,5}\\b$/"
+      },
+      {
+        "code": "+247",
+        "lengthRegex": "/^\\b\\d{5,5}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(ASCN 1ZZ)$/",
+    "sample_postcode": "ASCN 1ZZ",
+    "iso2": "SH",
+    "iso3": "SHN"
+  },
+  {
+    "name": "SAINT LUCIA",
+    "phone_validations": [
+      {
+        "code": "+1 758",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "LC[0-9]{2} ?[0-9]{3}",
+    "sample_postcode": "LC08 101",
+    "iso2": "LC",
+    "iso3": "LCA"
+  },
+  {
+    "name": "SAINT MARTIN (FRENCH PART)",
+    "phone_validations": [
+      {
+        "code": "+590",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "38601",
+    "iso2": "MF",
+    "iso3": "MAF"
+  },
+  {
+    "name": "SAINT PIERRE AND MIQUELON",
+    "phone_validations": [
+      {
+        "code": "+508",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "26393",
+    "iso2": "PM",
+    "iso3": "SPM"
+  },
+  {
+    "name": "SAIPAN",
+    "phone_validations": [
+      {
+        "code": "+1 670",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "30312",
+    "iso3": null
+  },
+  {
+    "name": "SAMOA",
+    "phone_validations": [
+      {
+        "code": "+685",
+        "lengthRegex": "/^\\b\\d{5,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "WS",
+    "iso3": "WSM"
+  },
+  {
+    "name": "SAN MARINO",
+    "phone_validations": [
+      {
+        "code": "+378",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(4789\\d)$/",
+    "sample_postcode": "47899",
+    "iso2": "SM",
+    "iso3": "SMR"
+  },
+  {
+    "name": "SAO TOME AND PRINCIPE",
+    "phone_validations": [
+      {
+        "code": "+239",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "ST",
+    "iso3": "STP"
+  },
+  {
+    "name": "SAUDI ARABIA",
+    "phone_validations": [
+      {
+        "code": "+966",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{5}([\\-]\\d{4})?$/",
+    "sample_postcode": "75431",
+    "iso2": "SA",
+    "iso3": "SAU"
+  },
+  {
+    "name": "SENEGAL",
+    "phone_validations": [
+      {
+        "code": "+221",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "68007",
+    "iso2": "SN",
+    "iso3": "SEN"
+  },
+  {
+    "name": "SERBIA, REPUBLIC OF",
+    "phone_validations": [
+      {
+        "code": "+381",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "SEYCHELLES",
+    "phone_validations": [
+      {
+        "code": "+248",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "SC",
+    "iso3": "SYC"
+  },
+  {
+    "name": "SIERRA LEONE",
+    "phone_validations": [
+      {
+        "code": "+232",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "SL",
+    "iso3": "SLE"
+  },
+  {
+    "name": "SINGAPORE",
+    "phone_validations": [
+      {
+        "code": "+65",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "470775",
+    "iso2": "SG",
+    "iso3": "SGP"
+  },
+  {
+    "name": "SINT MAARTEN (DUTCH PART)",
+    "phone_validations": [
+      {
+        "code": "+1 721",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(0000 AA)$/",
+    "sample_postcode": "0000 AA",
+    "iso2": "SX",
+    "iso3": "SXM"
+  },
+  {
+    "name": "SLOVAKIA",
+    "phone_validations": [
+      {
+        "code": "+421",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3} \\d{2})$/",
+    "sample_postcode": "751 44",
+    "iso2": "SK",
+    "iso3": "SVK"
+  },
+  {
+    "name": "SLOVENIA",
+    "phone_validations": [
+      {
+        "code": "+386",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6200",
+    "iso2": "SI",
+    "iso3": "SVN"
+  },
+  {
+    "name": "SOLOMON ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+677",
+        "lengthRegex": "/^\\b\\d{5,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "SB",
+    "iso3": "SLB"
+  },
+  {
+    "name": "SOMALIA",
+    "phone_validations": [
+      {
+        "code": "+252",
+        "lengthRegex": "/^\\b\\d{6,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "SO",
+    "iso3": "SOM"
+  },
+  {
+    "name": "SOUTH AFRICA",
+    "phone_validations": [
+      {
+        "code": "+27",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "8867",
+    "iso2": "ZA",
+    "iso3": "ZAF"
+  },
+  {
+    "name": "SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+500",
+        "lengthRegex": "/^\\b\\d{5,5}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(SIQQ 1ZZ)$/",
+    "sample_postcode": "SIQQ 1ZZ",
+    "iso2": "GS",
+    "iso3": "SGS"
+  },
+  {
+    "name": "SOUTH KOREA",
+    "phone_validations": [
+      {
+        "code": "+82",
+        "lengthRegex": "/^\\b\\d{8,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "62248",
+    "iso2": "KR",
+    "iso3": "KOR"
+  },
+  {
+    "name": "SOUTH SUDAN",
+    "phone_validations": [
+      {
+        "code": "+211",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "^(\\d{5})$",
+    "sample_postcode": "81111",
+    "iso2": "SS",
+    "iso3": "SSD"
+  },
+  {
+    "name": "SPAIN",
+    "phone_validations": [
+      {
+        "code": "+34",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "65170",
+    "iso2": "ES",
+    "iso3": "ESP"
+  },
+  {
+    "name": "SRI LANKA",
+    "phone_validations": [
+      {
+        "code": "+94",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "54039",
+    "iso2": "LK",
+    "iso3": "LKA"
+  },
+  {
+    "name": "ST KITTS AND NEVIS",
+    "phone_validations": [
+      {
+        "code": "+1 869",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "ST. BARTHELEMY",
+    "phone_validations": [
+      {
+        "code": "+590",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso3": null
+  },
+  {
+    "name": "ST. VINCENT",
+    "phone_validations": [
+      {
+        "code": "+1 784",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/(VC)(\\d{4})/",
+    "sample_postcode": "VC9036",
+    "iso3": null
+  },
+  {
+    "name": "SUDAN",
+    "phone_validations": [
+      {
+        "code": "+249",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "29471",
+    "iso2": "SD",
+    "iso3": "SDN"
+  },
+  {
+    "name": "SURINAME",
+    "phone_validations": [
+      {
+        "code": "+597",
+        "lengthRegex": "/^\\b\\d{6,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "SR",
+    "iso3": "SUR"
+  },
+  {
+    "name": "SVALBARD AND JAN MAYEN",
+    "phone_validations": [
+      {
+        "code": "+47",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6312",
+    "iso2": "SJ",
+    "iso3": "SJM"
+  },
+  {
+    "name": "SWAZILAND",
+    "phone_validations": [
+      {
+        "code": "+268",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^([A-Z]\\d{3})$/",
+    "sample_postcode": "J933",
+    "iso3": null
+  },
+  {
+    "name": "SWEDEN",
+    "phone_validations": [
+      {
+        "code": "+46",
+        "lengthRegex": "/^\\b\\d{7,13}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3} \\d{2})$/",
+    "sample_postcode": "549 98",
+    "iso2": "SE",
+    "iso3": "SWE"
+  },
+  {
+    "name": "SWITZERLAND",
+    "phone_validations": [
+      {
+        "code": "+41",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "6847",
+    "iso2": "CH",
+    "iso3": "CHE"
+  },
+  {
+    "name": "TAIWAN",
+    "phone_validations": [
+      {
+        "code": "+886",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3}\\d{2})|(\\d{3})$/",
+    "sample_postcode": "123",
+    "iso2": "TW",
+    "iso3": "TWN"
+  },
+  {
+    "name": "TAJIKISTAN",
+    "phone_validations": [
+      {
+        "code": "+992",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{3})$/",
+    "sample_postcode": "507",
+    "iso2": "TJ",
+    "iso3": "TJK"
+  },
+  {
+    "name": "TANZANIA",
+    "phone_validations": [
+      {
+        "code": "+255",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TZ",
+    "iso3": "TZA"
+  },
+  {
+    "name": "THAILAND",
+    "phone_validations": [
+      {
+        "code": "+66",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "86440",
+    "iso2": "TH",
+    "iso3": "THA"
+  },
+  {
+    "name": "TIMOR-LESTE",
+    "phone_validations": [
+      {
+        "code": "+670",
+        "lengthRegex": "/^\\b\\d{7,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "^\\\\d{5}$",
+    "sample_postcode": null,
+    "iso2": "TL",
+    "iso3": "TLS"
+  },
+  {
+    "name": "TOGO",
+    "phone_validations": [
+      {
+        "code": "+228",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TG",
+    "iso3": "TGO"
+  },
+  {
+    "name": "TOKELAU",
+    "phone_validations": [
+      {
+        "code": "+690",
+        "lengthRegex": "/^\\b\\d{4,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TK",
+    "iso3": "TKL"
+  },
+  {
+    "name": "TONGA",
+    "phone_validations": [
+      {
+        "code": "+676",
+        "lengthRegex": "/^\\b\\d{5,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TO",
+    "iso3": "TON"
+  },
+  {
+    "name": "TRINIDAD AND TOBAGO",
+    "phone_validations": [
+      {
+        "code": "+1 868",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TT",
+    "iso3": "TTO"
+  },
+  {
+    "name": "TUNISIA",
+    "phone_validations": [
+      {
+        "code": "+216",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "9620",
+    "iso2": "TN",
+    "iso3": "TUN"
+  },
+  {
+    "name": "TURKEY",
+    "phone_validations": [
+      {
+        "code": "+90",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "14535",
+    "iso2": "TR",
+    "iso3": "TUR"
+  },
+  {
+    "name": "TURKMENISTAN",
+    "phone_validations": [
+      {
+        "code": "+993",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "503016",
+    "iso2": "TM",
+    "iso3": "TKM"
+  },
+  {
+    "name": "TURKS AND CAICOS ISLANDS",
+    "phone_validations": [
+      {
+        "code": "+1 649",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(TKCA 1ZZ)$/",
+    "sample_postcode": "TKCA 1ZZ",
+    "iso2": "TC",
+    "iso3": "TCA"
+  },
+  {
+    "name": "TUVALU",
+    "phone_validations": [
+      {
+        "code": "+688",
+        "lengthRegex": "/^\\b\\d{5,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "TV",
+    "iso3": "TUV"
+  },
+  {
+    "name": "UGANDA",
+    "phone_validations": [
+      {
+        "code": "+256",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "UG",
+    "iso3": "UGA"
+  },
+  {
+    "name": "UKRAINE",
+    "phone_validations": [
+      {
+        "code": "+380",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "24990",
+    "iso2": "UA",
+    "iso3": "UKR"
+  },
+  {
+    "name": "UNITED ARAB EMIRATES",
+    "phone_validations": [
+      {
+        "code": "+971",
+        "lengthRegex": "/^\\b\\d{8,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "AE",
+    "iso3": "ARE"
+  },
+  {
+    "name": "UNITED KINGDOM",
+    "phone_validations": [
+      {
+        "code": "+44",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))s?[0-9][A-Za-z]{2})/",
+    "sample_postcode": "v84YS",
+    "iso2": "GB",
+    "iso3": "GBR"
+  },
+  {
+    "name": "UNITED STATES OF AMERICA",
+    "phone_validations": [
+      {
+        "code": "+1",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^\\d{5}(?:[-\\s]\\d{4})?$/",
+    "sample_postcode": "17035",
+    "iso2": "US",
+    "iso3": "USA"
+  },
+  {
+    "name": "URUGUAY",
+    "phone_validations": [
+      {
+        "code": "+598",
+        "lengthRegex": "/^\\b\\d{8,8}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "97900",
+    "iso2": "UY",
+    "iso3": "URY"
+  },
+  {
+    "name": "UZBEKISTAN",
+    "phone_validations": [
+      {
+        "code": "+998",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "635281",
+    "iso2": "UZ",
+    "iso3": "UZB"
+  },
+  {
+    "name": "VANUATU",
+    "phone_validations": [
+      {
+        "code": "+678",
+        "lengthRegex": "/^\\b\\d{5,7}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "VU",
+    "iso3": "VUT"
+  },
+  {
+    "name": "VENEZUELA",
+    "phone_validations": [
+      {
+        "code": "+58",
+        "lengthRegex": "/^\\b\\d{10,10}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{4})$/",
+    "sample_postcode": "4792",
+    "iso2": "VE",
+    "iso3": "VEN"
+  },
+  {
+    "name": "VIETNAM",
+    "phone_validations": [
+      {
+        "code": "+84",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{6})$/",
+    "sample_postcode": "545326",
+    "iso2": "VN",
+    "iso3": "VNM"
+  },
+  {
+    "name": "VIRGIN ISLANDS, BRITISH",
+    "phone_validations": [
+      {
+        "code": "+1 284",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(VG11)[0-6][0]$/",
+    "sample_postcode": "VG1100",
+    "iso2": "VG",
+    "iso3": "VGB"
+  },
+  {
+    "name": "VIRGIN ISLANDS, U.S.",
+    "phone_validations": [
+      {
+        "code": "+1 340",
+        "lengthRegex": "/^\\b\\d{7,7}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "73923",
+    "iso2": "VI",
+    "iso3": "VIR"
+  },
+  {
+    "name": "WALLIS AND FUTUNA",
+    "phone_validations": [
+      {
+        "code": "+681",
+        "lengthRegex": "/^\\b\\d{6,6}\\b$/"
+      }
+    ],
+    "postcode_regex": "^(\\d{5})$",
+    "sample_postcode": "98600",
+    "iso2": "WF",
+    "iso3": "WLF"
+  },
+  {
+    "name": "WESTERN SAHARA",
+    "phone_validations": [
+      {
+        "code": "+212",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "EH",
+    "iso3": "ESH"
+  },
+  {
+    "name": "YEMEN",
+    "phone_validations": [
+      {
+        "code": "+967",
+        "lengthRegex": "/^\\b\\d{7,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "YE",
+    "iso3": "YEM"
+  },
+  {
+    "name": "ZAMBIA",
+    "phone_validations": [
+      {
+        "code": "+260",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": "/^(\\d{5})$/",
+    "sample_postcode": "39503",
+    "iso2": "ZM",
+    "iso3": "ZMB"
+  },
+  {
+    "name": "ZIMBABWE",
+    "phone_validations": [
+      {
+        "code": "+263",
+        "lengthRegex": "/^\\b\\d{9,9}\\b$/"
+      }
+    ],
+    "postcode_regex": ".*",
+    "sample_postcode": null,
+    "iso2": "ZW",
+    "iso3": "ZWE"
+  }
+]

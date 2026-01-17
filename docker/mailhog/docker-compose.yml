@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mailhog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mailhog
+    restart: unless-stopped
+    ports:
+      - "${MAILHOG_WEB_PORT:-8025}:8025"  # Web UI
+      - "${MAILHOG_SMTP_PORT:-1025}:1025"  # SMTP
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8025 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mailhog_network
+      - api_network
+
+networks:
+  mailhog_network:
+    driver: bridge
+  api_network:
+    external: true
+    name: api_network
+

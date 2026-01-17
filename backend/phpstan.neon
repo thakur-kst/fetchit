@@ -1,0 +1,16 @@
+parameters:
+    level: 8
+    paths:
+        - app
+        - config
+        - database
+        - routes
+    excludePaths:
+        - app/Console/Kernel.php
+        - app/Exceptions/Handler.php
+        - app/Http/Middleware
+    ignoreErrors:
+        # Add specific errors to ignore here
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false

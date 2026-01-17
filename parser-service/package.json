@@ -1,0 +1,20 @@
+{
+  "name": "fetchit-parser-service",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Email parser service for FetchIt backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "email",
+    "parser",
+    "orders"
+  ],
+  "author": "FetchIt Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
