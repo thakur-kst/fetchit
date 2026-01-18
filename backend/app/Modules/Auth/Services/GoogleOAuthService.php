@@ -80,7 +80,7 @@ class GoogleOAuthService
                     'email_verified_at' => $googleData['email_verified'] ? now() : null,
                     'name' => $googleData['name'] ?? $user->name,
                     'picture' => $googleData['picture'] ?? $user->picture,
-                    'locale' => $googleData['locale'] ?? $user->locale,
+                    'locale' => $googleData['locale'] ?? $user->locale ?? 'en',
                 ]);
             } else {
                 // Create new user using User model directly
@@ -90,7 +90,7 @@ class GoogleOAuthService
                     'email_verified_at' => $googleData['email_verified'] ? now() : null,
                     'name' => $googleData['name'] ?? $googleData['email'],
                     'picture' => $googleData['picture'],
-                    'locale' => $googleData['locale'],
+                    'locale' => $googleData['locale'] ?? 'en',
                     'status' => 'active',
                 ]);
             }

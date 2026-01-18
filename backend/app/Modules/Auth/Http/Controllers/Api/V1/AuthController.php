@@ -3,18 +3,20 @@
 namespace Modules\Auth\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use Dedoc\Scramble\Attributes\HeaderParameter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\Auth\Http\Resources\UserResource;
 use Modules\Auth\Services\GoogleOAuthService;
 use Modules\Auth\Services\JwtTokenService;
-use Modules\DBCore\Models\Core\User;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Log;
-
+use Dedoc\Scramble\Attributes\Response;
 /**
  * Authentication Controller
- * 
+ *
  * Handles Google OAuth authentication and JWT token management.
+ *
+ * @tags Auth
  */
 class AuthController extends Controller
 {
@@ -26,9 +28,21 @@ class AuthController extends Controller
 
     /**
      * Verify Google ID token and generate JWT tokens
-     * 
-     * POST /auth/google/verify
+     *
+     * Exchanges a Google ID token for user info, finds or creates the user, and returns JWT access and refresh tokens.
+     *
+     * @operationId authVerifyGoogle
+     * @tags Auth
+     * @response 401 {
+     *   "success": false,
+     *   "error": "Invalid or expired Google token"
+     * }
+     * @response 500 {
+     *   "success": false,
+     *   "error": "Authentication failed"
+     * }
      */
+    #[Response(200, 'Authentication successful', type: 'array{user: UserResource, tokens: array{accessToken: string, refreshToken: string, expiresIn: int}}')]
     public function verifyGoogleToken(Request $request): JsonResponse
     {
         $request->validate([
@@ -62,13 +76,7 @@ class AuthController extends Controller
                 'success' => true,
                 'message' => 'Authentication successful',
                 'data' => [
-                    'user' => [
-                        'id' => $user->uuid,
-                        'email' => $user->email,
-                        'name' => $user->name,
-                        'picture' => $user->picture,
-                        'emailVerified' => $user->email_verified_at !== null,
-                    ],
+                    'user' => new UserResource($user),
                     'tokens' => $tokens,
                 ],
             ]);
@@ -87,9 +95,29 @@ class AuthController extends Controller
 
     /**
      * Refresh access token
-     * 
-     * POST /auth/refresh
+     *
+     * Exchanges a valid refresh token for new access and refresh tokens.
+     *
+     * @operationId authRefresh
+     * @tags Auth
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlhdCI6MTcwNDAwMDAwMCwiZXhwIjoxNzA0MDAzNjAwfQ.example",
+     *     "refreshToken": "def50200a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
+     *     "expiresIn": 3600
+     *   }
+     * }
+     * @response 401 {
+     *   "success": false,
+     *   "error": "Invalid or expired refresh token"
+     * }
+     * @response 500 {
+     *   "success": false,
+     *   "error": "Token refresh failed"
+     * }
      */
+    #[Response(200, 'Token refreshed successfully', type: 'array{accessToken: string, refreshToken: string, expiresIn: int}')]
     public function refresh(Request $request): JsonResponse
     {
         $request->validate([
@@ -124,9 +152,32 @@ class AuthController extends Controller
 
     /**
      * Get current authenticated user
-     * 
-     * GET /auth/me
+     *
+     * Returns the profile of the authenticated user. Requires Bearer token.
+     *
+     * @operationId authMe
+     * @tags Auth
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "id": "550e8400-e29b-41d4-a716-446655440000",
+     *     "email": "user@example.com",
+     *     "name": "John Doe",
+     *     "picture": "https://lh3.googleusercontent.com/a/default-user",
+     *     "emailVerified": true,
+     *     "createdAt": "2024-01-01T12:00:00Z"
+     *   }
+     * }
+     * @response 401 {
+     *   "success": false,
+     *   "error": "Unauthenticated"
+     * }
+     * @response 500 {
+     *   "success": false,
+     *   "error": "Failed to get user"
+     * }
      */
+    #[Response(200, 'User profile retrieved successfully', type: 'UserResource')]
     public function me(Request $request): JsonResponse
     {
         try {
@@ -141,14 +192,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => [
-                    'id' => $user->uuid,
-                    'email' => $user->email,
-                    'name' => $user->name,
-                    'picture' => $user->picture,
-                    'emailVerified' => $user->email_verified_at !== null,
-                    'createdAt' => $user->created_at->toIso8601String(),
-                ],
+                'data' => new UserResource($user),
             ]);
         } catch (\Exception $e) {
             Log::error('Error getting current user', [
@@ -164,9 +208,25 @@ class AuthController extends Controller
 
     /**
      * Logout user
-     * 
-     * POST /auth/logout
+     *
+     * Revokes the refresh token so it cannot be used again. Requires Bearer token and refreshToken in body.
+     *
+     * @operationId authLogout
+     * @tags Auth
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Successfully logged out"
+     * }
+     * @response 400 {
+     *   "success": false,
+     *   "error": "Invalid refresh token"
+     * }
+     * @response 500 {
+     *   "success": false,
+     *   "error": "Logout failed"
+     * }
      */
+    #[Response(200, 'Successfully logged out', type: 'array{success: bool, message: string}')]
     public function logout(Request $request): JsonResponse
     {
         $request->validate([

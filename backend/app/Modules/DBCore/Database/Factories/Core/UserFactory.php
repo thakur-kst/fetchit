@@ -11,7 +11,7 @@ use Modules\DBCore\Models\Core\User;
  * User Factory
  *
  * Creates User models for testing.
- * Users are stored in the 'fetchit' schema.
+ * Users are stored in the 'public' schema.
  *
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\DBCore\Models\Core\User>
  */

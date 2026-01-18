@@ -13,12 +13,11 @@ return [
     */
 
     /*
-    | FetchIt Schema Name
-    | 
-    | The PostgreSQL schema name for all application tables.
-    | Single schema architecture for simplicity and better performance.
+    | Application Schema Name
+    |
+    | The PostgreSQL schema for all application tables. Uses 'public' only.
     */
-    'fetchit_schema' => env('DB_SCHEMA_FETCHIT', 'fetchit'),
+    'fetchit_schema' => env('DB_SCHEMA_FETCHIT', 'public'),
 
     /*
     | Module metadata

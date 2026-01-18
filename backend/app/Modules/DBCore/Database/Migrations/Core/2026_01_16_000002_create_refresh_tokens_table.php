@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Config;
  * Stores JWT refresh tokens for user authentication.
  * Tokens are hashed with SHA-256 for security.
  * 
- * Schema: fetchit
+ * Schema: public
  */
 return new class extends Migration {
     public function up(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
 
         SchemaHelper::createInSchema($fetchitSchema, 'refresh_tokens', function (Blueprint $table) use ($fetchitSchema) {
             $table->uuid('id')->primary()->default(DB::raw('gen_random_uuid()'));
@@ -45,7 +45,7 @@ return new class extends Migration {
 
     public function down(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
         SchemaHelper::dropFromSchema($fetchitSchema, 'refresh_tokens');
     }
 };

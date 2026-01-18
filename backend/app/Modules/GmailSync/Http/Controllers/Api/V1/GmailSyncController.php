@@ -9,11 +9,13 @@ use Modules\GmailAccounts\Models\GmailAccount;
 use Modules\GmailSync\Models\GmailSyncJob;
 use Modules\GmailSync\Services\GmailSyncService;
 use Illuminate\Support\Facades\Log;
-
+use Dedoc\Scramble\Attributes\Response;
 /**
  * Gmail Sync Controller
- * 
+ *
  * Handles Gmail sync orchestration and status polling.
+ *
+ * @tags Gmail
  */
 class GmailSyncController extends Controller
 {
@@ -24,9 +26,20 @@ class GmailSyncController extends Controller
 
     /**
      * Trigger Gmail sync
-     * 
-     * POST /api/gmail/accounts/{accountId}/sync
+     *
+     * Starts syncing emails from the Gmail account and parsing orders. Returns job_id for status polling.
+     *
+     * @operationId gmailSyncStart
+     * @tags Gmail
+     * @response 200 {"success": true, "message": "Sync started", "data": {"job_id": "770e8400-e29b-41d4-a716-446655440001", "total_emails": 42}}
+     * @response 200 {"success": true, "message": "No new emails to sync", "data": {"total_emails": 0}}
+     * @response 404 {"success": false, "error": "Gmail account not found"}
+     * @response 500 {"success": false, "error": "Failed to start sync"}
      */
+    #[Response(200, 'Sync started', type: 'array{success: bool, message: string, data: array{job_id: string, total_emails: int}}')]
+    #[Response(200, 'No new emails to sync', type: 'array{success: bool, message: string, data: array{total_emails: int}}')]
+    #[Response(404, 'Gmail account not found', type: 'array{success: bool, error: string}')]
+    #[Response(500, 'Failed to start sync', type: 'array{success: bool, error: string}')]
     public function syncAccount(Request $request, string $accountId): JsonResponse
     {
         try {
@@ -75,9 +88,20 @@ class GmailSyncController extends Controller
 
     /**
      * Get sync status
-     * 
-     * GET /api/gmail/accounts/{accountId}/sync-status
+     *
+     * Returns the status of the latest in-progress or completed sync for the Gmail account. Use for polling.
+     *
+     * @operationId gmailSyncStatus
+     * @tags Gmail
+     * @response 200 {"success": true, "data": {"is_complete": true, "processed": 10, "total": 10, "new_orders": 3, "status": "completed"}}
+     * @response 200 {"success": true, "data": {"is_complete": true, "processed": 0, "total": 0, "new_orders": 0, "status": null}}
+     * @response 404 {"success": false, "error": "Gmail account not found"}
+     * @response 500 {"success": false, "error": "Failed to get sync status"}
      */
+    #[Response(200, 'Sync status retrieved successfully', type: 'array{success: bool, data: array{is_complete: bool, processed: int, total: int, new_orders: int, status: string}}')]
+    #[Response(200, 'No sync status', type: 'array{success: bool, data: array{is_complete: bool, processed: int, total: int, new_orders: int, status: null}}')]
+    #[Response(404, 'Gmail account not found', type: 'array{success: bool, error: string}')]
+    #[Response(500, 'Failed to get sync status', type: 'array{success: bool, error: string}')]
     public function getSyncStatus(Request $request, string $accountId): JsonResponse
     {
         try {

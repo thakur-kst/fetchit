@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Add seeders here as needed for FetchIt
-        // Example: $this->call(SomeSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

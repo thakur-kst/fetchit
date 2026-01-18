@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Config;
  * Stores linked Gmail accounts with OAuth tokens.
  * Tokens are encrypted using Laravel's encryption.
  * 
- * Schema: fetchit
+ * Schema: public
  */
 return new class extends Migration {
     public function up(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
 
         SchemaHelper::createInSchema($fetchitSchema, 'gmail_accounts', function (Blueprint $table) use ($fetchitSchema) {
             $table->uuid('id')->primary()->default(DB::raw('gen_random_uuid()'));
@@ -54,7 +54,7 @@ return new class extends Migration {
 
     public function down(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
         SchemaHelper::dropFromSchema($fetchitSchema, 'gmail_accounts');
     }
 };

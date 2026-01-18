@@ -18,7 +18,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * User Model
  *
  * Represents users in the FetchIt application.
- * Users are stored in the 'fetchit' schema.
+ * Users are stored in the 'public' schema.
  *
  * @package Modules\DBCore\Models\Core
  * @version 1.0.0
@@ -48,7 +48,7 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * The schema this model belongs to
-     * Set from configuration, defaults to 'fetchit'
+     * Set from configuration, defaults to 'public'
      * 
      * @var string|null
      */
@@ -117,7 +117,7 @@ class User extends Authenticatable implements JWTSubject
 
         // Set schema from configuration if not already set
         if (!isset($this->schema)) {
-            $this->schema = config('dbcore.fetchit_schema', 'fetchit');
+            $this->schema = config('dbcore.fetchit_schema', 'public');
         }
     }
 
@@ -131,7 +131,7 @@ class User extends Authenticatable implements JWTSubject
         // Set schema from configuration for all instances
         static::retrieved(function ($model) {
             if (!isset($model->schema)) {
-                $model->schema = config('dbcore.fetchit_schema', 'fetchit');
+                $model->schema = config('dbcore.fetchit_schema', 'public');
             }
         });
 
@@ -142,7 +142,7 @@ class User extends Authenticatable implements JWTSubject
 
             // Ensure schema is set from config
             if (!isset($user->schema)) {
-                $user->schema = config('dbcore.fetchit_schema', 'fetchit');
+                $user->schema = config('dbcore.fetchit_schema', 'public');
             }
         });
     }

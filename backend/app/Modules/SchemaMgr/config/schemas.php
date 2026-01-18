@@ -14,45 +14,22 @@ return [
 
     'enabled' => env('DB_SCHEMAS_ENABLED', true),
 
-    'default' => env('DB_DEFAULT_SCHEMA', 'fetchit'),
+    'default' => env('DB_DEFAULT_SCHEMA', 'public'),
 
     /*
     |--------------------------------------------------------------------------
     | Schema Definitions
     |--------------------------------------------------------------------------
     |
-    | Define all available schemas and their purposes:
-    | - fetchit: All application tables (users, orders, gmail_accounts, etc.)
-    | - public: Laravel framework tables (migrations, cache, sessions, etc.)
+    | All tables use the public schema only.
     |
     */
 
     'schemas' => [
-        'fetchit' => [
-            'description' => 'FetchIt application tables',
-            'tables' => [
-                // User Management
-                'users',
-                'refresh_tokens',
-
-                // Gmail Integration
-                'gmail_accounts',
-                'gmail_sync_jobs',
-
-                // Orders
-                'orders',
-
-                // Telescope Tables (if used)
-                'telescope_entries',
-                'telescope_entries_tags',
-                'telescope_monitoring',
-            ],
-        ],
-
         'public' => [
-            'description' => 'Laravel framework tables',
+            'description' => 'All application and Laravel framework tables',
             'tables' => [
-                // Laravel Framework Tables
+                // Laravel framework
                 'migrations',
                 'cache',
                 'cache_locks',
@@ -62,6 +39,16 @@ return [
                 'failed_jobs',
                 'jobs',
                 'job_batches',
+                // FetchIt application
+                'users',
+                'refresh_tokens',
+                'gmail_accounts',
+                'gmail_sync_jobs',
+                'orders',
+                // Telescope (if used)
+                'telescope_entries',
+                'telescope_entries_tags',
+                'telescope_monitoring',
             ],
         ],
     ],
@@ -70,19 +57,8 @@ return [
     |--------------------------------------------------------------------------
     | Schema Table Mapping
     |--------------------------------------------------------------------------
-    |
-    | Reverse mapping: table name => schema name
-    | Automatically generated from the schemas array above
-    |
     */
 
-    'table_schema_map' => collect([
-        'fetchit' => collect(config('schemas.schemas.fetchit.tables', [])),
-        'public' => collect(config('schemas.schemas.public.tables', [])),
-    ])->flatMap(function ($tables, $schema) {
-        return $tables->mapWithKeys(function ($table) use ($schema) {
-            return [$table => $schema];
-        });
-    })->toArray(),
+    'table_schema_map' => collect(config('schemas.schemas.public.tables', []))->mapWithKeys(fn ($table) => [$table => 'public'])->toArray(),
 
 ];

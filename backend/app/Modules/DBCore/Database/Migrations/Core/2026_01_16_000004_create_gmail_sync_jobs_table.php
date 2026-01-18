@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Config;
  * Tracks Gmail sync job progress for polling.
  * Created when sync is triggered, updated by queue workers.
  * 
- * Schema: fetchit
+ * Schema: public
  */
 return new class extends Migration {
     public function up(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
 
         SchemaHelper::createInSchema($fetchitSchema, 'gmail_sync_jobs', function (Blueprint $table) use ($fetchitSchema) {
             $table->uuid('id')->primary()->default(DB::raw('gen_random_uuid()'));
@@ -29,26 +29,24 @@ return new class extends Migration {
             $table->text('error_message')->nullable();
             $table->timestamps();
 
-            // Foreign key
             $table->foreign('gmail_account_id')
                 ->references('id')
                 ->on("{$fetchitSchema}.gmail_accounts")
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            // Check constraint for status
-            DB::statement("ALTER TABLE {$fetchitSchema}.gmail_sync_jobs ADD CONSTRAINT chk_gmail_sync_jobs_status CHECK (status IN ('processing', 'completed', 'failed'))");
-
-            // Indexes
             $table->index('gmail_account_id', 'idx_gmail_sync_jobs_account');
             $table->index(['gmail_account_id', 'status'], 'idx_gmail_sync_jobs_status');
             $table->index('created_at', 'idx_gmail_sync_jobs_created');
         });
+
+        $qual = $fetchitSchema === 'public' ? 'gmail_sync_jobs' : "{$fetchitSchema}.gmail_sync_jobs";
+        DB::statement("ALTER TABLE {$qual} ADD CONSTRAINT chk_gmail_sync_jobs_status CHECK (status IN ('processing', 'completed', 'failed'))");
     }
 
     public function down(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
         SchemaHelper::dropFromSchema($fetchitSchema, 'gmail_sync_jobs');
     }
 };

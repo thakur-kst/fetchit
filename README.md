@@ -1,23 +1,27 @@
 # FetchIt API
 
-Modern Laravel 12 API backend with modular architecture, built for scalability and maintainability.
+Modern Laravel 12 API backend with modular architecture, built for Gmail-based order sync and management.
 
 ## 🚀 Overview
 
-FetchIt is a modular Laravel 12 backend application that provides a RESTful API. It uses Docker Compose for local development and follows a modular architecture with PostgreSQL multi-schema database design.
+FetchIt is a modular Laravel 12 backend that provides a RESTful API for:
+
+- **Google OAuth + JWT** authentication
+- **Gmail account linking** and OAuth flows
+- **Gmail sync** to fetch, parse, and store orders from email
+- **Order** CRUD and filtering
+
+It uses Docker Compose for local development and a single-schema PostgreSQL design.
 
 ### Tech Stack
 
 - **Backend**: Laravel 12 on PHP 8.5
-- **Authentication**: Keycloak (Identity and Access Management) - *configured but module in development*
-- **Database**: PostgreSQL 16 with multi-schema architecture (core, customer_portal, public)
-- **Cache/Queue**: Redis 7
-- **Storage**: MinIO (S3-compatible)
-- **Search**: Elasticsearch 8.15
-- **WebSockets**: Soketi (Pusher-compatible)
+- **Authentication**: Google OAuth + JWT (tymon/jwt-auth)
+- **Database**: PostgreSQL 16, single-schema (`fetchit` + `public`)
+- **Cache/Queue**: Redis 7, Laravel Horizon
+- **Secrets**: AWS Secrets Manager (LocalStack for local dev)
+- **Parser**: Node.js Express service (email → order extraction)
 - **Reverse Proxy**: Nginx
-- **Mail**: Mailhog (development)
-- **UUID**: Ramsey UUID v5.0
 
 ## 📋 Prerequisites
 
@@ -26,345 +30,246 @@ FetchIt is a modular Laravel 12 backend application that provides a RESTful API.
 
 ## 🏗️ Architecture
 
-The backend follows a **modular architecture** with self-contained modules:
+### Modules
 
-- **Modules**: Located in `app/Modules/{ModuleName}/`
-  - Each module is package-ready and self-contained
-  - Modules include their own routes, controllers, services, models, migrations
-  - Service providers auto-register routes and dependencies
+| Module | Description |
+|--------|-------------|
+| **Auth** | Google OAuth, JWT access/refresh tokens, logout |
+| **DBCore** | Core models and migrations (`fetchit` schema) |
+| **GmailAccounts** | Gmail OAuth, link/unlink accounts, token refresh |
+| **GmailSync** | Sync jobs, email parsing jobs, status polling |
+| **HealthCheck** | Liveness, readiness, detailed health |
+| **Orders** | Order CRUD and filtering |
+| **SchemaMgr** | Schema utilities and Artisan commands |
+| **Shared** | Shared helpers and traits |
 
-### Current Modules
+### Database
 
-#### ✅ Production Ready
-
-1. **HealthCheck** - Health monitoring and status endpoints
-   - Basic health checks
-   - Liveness and readiness probes
-   - Detailed health status with system checks (database, cache, Redis)
-   - Health check logging
-
-2. **DatabaseFoundation** - Centralized database migrations and schema management
-   - Multi-schema organization (core, customer_portal, public)
-   - 17 migrations organized by schema
-   - Core schema: organizations, branches, roles, permissions
-   - Customer Portal schema: users, customer_profiles, audit logs (legacy naming)
-   - Framework schema: Laravel system tables
-
-3. **SchemaManagement** - PostgreSQL multi-schema utilities
-   - Schema creation and management
-   - Schema-aware migrations
-   - Model trait for automatic schema detection
-   - Artisan commands for schema operations
-
-#### 🚧 In Development
-
-4. **Customer** - Customer management functionality
-5. **Tenancy** - Multi-tenant support
-
-### Database Architecture
-
-The application uses **PostgreSQL multi-schema architecture**:
-
-- **`core` schema**: Master data, organizations, branches, roles, permissions
-- **`customer_portal` schema**: Tenant-specific data, users, customer profiles, audit logs
-- **`public` schema**: Laravel framework tables (cache, jobs, sessions)
-
-
+- **`fetchit` schema**: `users`, `refresh_tokens`, `gmail_accounts`, `gmail_sync_jobs`, `orders`
+- **`public` schema**: Laravel framework tables (cache, jobs, sessions, etc.)
 
 ## 🚀 Quick Start
 
 ### First-Time Setup
 
-1. **Clone the repository**
+1. **Clone and enter the project**
    ```bash
    git clone <repository-url>
    cd fetchit-api
    ```
 
-2. **Create environment file**
+2. **Environment**
    ```bash
-   cp .env.example backend/.env  # if .env.example exists
+   cp backend/.env.example backend/.env
    ```
-   (Adjust secrets if needed)
+   Edit `backend/.env`: set `APP_KEY`, `DB_*`, `REDIS_*`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `PARSER_SERVICE_URL`, `JWT_SECRET`, and `DB_SCHEMA_FETCHIT=fetchit` as needed.
 
-3. **Build and start Docker containers**
+3. **Start services**
    ```bash
-   docker compose up -d --build
+   ./docker/start-all-services.sh
    ```
-  
+   This starts Redis, Postgres, LocalStack, the main app (app, queue, scheduler), and Nginx.
 
-4. **Install backend dependencies**
+4. **Backend setup**
    ```bash
-   docker compose exec app bash -lc "cd /var/www/html && composer install"
-   docker compose exec app bash -lc "cd /var/www/html && php artisan key:generate"
-   ```
-
-5. **Create PostgreSQL schemas**
-  
-   To create the schemas, run:
-
-   ```bash
-     docker compose exec app bash
-     php artisan schema:create --schema=core
-     php artisan schema:create --schema=customer_portal
-
-    ```
-
-6. **Run database migrations**
-   ```bash
-   docker compose exec app bash -lc "cd /var/www/html && php artisan migrate --seed"
+   docker compose exec app composer install --no-interaction
+   docker compose exec app php artisan key:generate
+   docker compose exec app php artisan migrate
    ```
 
-7. **Configure Keycloak in Laravel** (if using Keycloak)
-   Add Keycloak environment variables to `backend/.env`:
-   ```env
-   KEYCLOAK_SERVER_URL=http://keycloak:8080
-   KEYCLOAK_REALM=fetchit
-   KEYCLOAK_CLIENT_ID=fetchit-api
-   KEYCLOAK_CLIENT_SECRET=<secret-from-init-script>
-   KEYCLOAK_REALM_PUBLIC_KEY=<public-key>
-   ```
-### Day-to-Day Usage
+5. **Google OAuth** (optional for local dev)
+   - Create a project in [Google Cloud Console](https://console.cloud.google.com/).
+   - Enable the Google+ API (or People API) and create OAuth 2.0 credentials.
+   - Set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in `backend/.env`.
 
-**Start the stack:**
+6. **Parser service** (for Gmail sync)
+   - See `parser-service/README.md` for install and run (e.g. `npm install`, then `node server.js` or PM2).
+
+### Day-to-Day
+
+**Start:**
 ```bash
-docker compose up -d
+./docker/start-all-services.sh
+# or: docker compose up -d
 ```
 
-**Stop the stack:**
+**Stop:**
 ```bash
-docker compose down
+./docker/stop-all-services.sh
+# or: docker compose down
 ```
 
-**View logs:**
+**Logs:**
 ```bash
-docker compose logs -f [service-name]
-
+docker compose logs -f app
 ```
 
-**Access app shell:**
+**App shell:**
 ```bash
 docker compose exec app bash
 ```
 
 ## 🌐 Service URLs
 
-Once the stack is running, access services at:
-
-- **Application**: http://localhost
-- **Keycloak Admin**: http://localhost:8080 (admin / admin) - *if configured*
-- **Keycloak**: http://localhost:8080 (direct access) - *if configured*
-- **PostgreSQL**: localhost:54321 (db: `fetchit`, user: `fetchit`, password: `secret`)
-- **pgAdmin**: http://localhost:5050 (email: `admin@example.com`, password: `admin`)
+- **API**: http://localhost
+- **PostgreSQL**: localhost:5432 (db: `fetchit`, user: `fetchit`, password: from `.env`)
 - **Redis**: localhost:6379
-- **Mailhog UI**: http://localhost:8025
-- **MinIO Console**: http://localhost:9001 (user: `minio`, password: `minio123`)
-- **MinIO S3 API**: http://localhost:9000
-- **Elasticsearch**: http://localhost:9200
-- **Soketi WebSocket**: ws://localhost:6001/app/local-key
-- **Kafka**: localhost:9092 (broker)
-- **Kafka UI**: http://localhost:8089 (web interface)
-- **Zookeeper**: localhost:2181
+- **LocalStack**: http://localhost:4566 (Secrets Manager, etc.)
+- **Parser service**: See `parser-service/README.md` (run separately)
+- **Horizon**: http://localhost/horizon (when enabled and routes configured)
 
 ## 📡 API Endpoints
 
-### Health Check
+### Health
 
-- `GET /api/v1/health` - Basic health check
-- `GET /api/v1/health/liveness` - Liveness probe (always returns 200)
-- `GET /api/v1/health/readiness` - Readiness probe (checks system dependencies)
-- `GET /api/v1/health/detailed` - Detailed health status with system checks
-- `GET /api/v1/` - Simple ping endpoint
+- `GET /api/v1/health` – Basic health
+- `GET /api/v1/health/liveness` – Liveness probe
+- `GET /api/v1/health/readiness` – Readiness (DB, Redis, etc.)
+- `GET /api/v1/health/detailed` – Detailed checks
+- `GET /api/v1/` – Ping
 
-All health check endpoints are publicly accessible (no authentication required).
+### Auth (Google OAuth + JWT)
 
-### Authentication
+- `POST /api/v1/auth/google/verify` – Verify Google ID token, return user + JWT (`idToken`, optional `deviceName`, `deviceId`)
+- `POST /api/v1/auth/refresh` – Refresh access token (`refreshToken`)
+- `GET /api/v1/auth/me` – Current user *(auth)*
+- `POST /api/v1/auth/logout` – Logout *(auth)*
 
-Authentication endpoints are mentioned in routes but the Auth module is currently in development. Keycloak is configured in Docker but the Laravel integration module is not yet implemented.
+### Gmail Accounts *(auth)*
 
+- Link, unlink, list Gmail accounts; OAuth callback and token refresh. See `app/Modules/GmailAccounts/routes/api.php`.
 
-## 🐳 Docker Services
+### Gmail Sync *(auth)*
 
-All services share a single Docker network `fetchit`:
+- Start sync, poll status. See `app/Modules/GmailSync/routes/api.php`.
 
-- **app**: PHP 8.5 FPM, Laravel 12 backend
-- **keycloak**: Identity and Access Management (IAM) server - *configured but module in development*
-- **nginx**: Serves Laravel from `/public`, proxies Keycloak auth endpoints and Soketi websockets
-- **queue**: Runs `php artisan queue:work`
-- **scheduler**: Runs `php artisan schedule:run` every 60s
-- **soketi**: Pusher-compatible WebSocket server
-- **db**: PostgreSQL 16
-- **pgadmin**: UI for managing PostgreSQL
-- **redis**: Cache + queue backing store
-- **mailhog**: Development SMTP + web UI
-- **minio**: S3-compatible storage
-- **elasticsearch**: Single-node ES for search
-- **kafka**: Apache Kafka message broker
-- **zookeeper**: ZooKeeper (required by Kafka)
-- **kafka-ui**: Web UI for Kafka management
+### Orders *(auth)*
 
-See `docker-compose.yml` for exact configuration.
+- CRUD and filtering. See `app/Modules/Orders/routes/api.php`.
+
+## 🐳 Docker
+
+### Main services (from `docker compose`)
+
+- **app** – Laravel (PHP 8.5 FPM)
+- **queue** – `php artisan queue:work` (e.g. `email-parsing`)
+- **scheduler** – `php artisan schedule:run`
+- **nginx** – Serves Laravel, reverse proxy
+
+### Infrastructure (from `./docker/start-all-services.sh`)
+
+- **redis** – Cache and queues
+- **postgres** – PostgreSQL 16
+- **localstack** – AWS APIs (e.g. Secrets Manager) for local dev
+
+See `docker-compose.yml` and `docker/start-all-services.sh` for details.
 
 ## 🧪 Testing
 
-Run the test suite:
-
 ```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan test"
+docker compose exec app php artisan test
 ```
 
-Run specific module tests:
+Filter by module:
 
 ```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan test --filter HealthCheck"
-docker compose exec app bash -lc "cd /var/www/html && php artisan test --filter DatabaseFoundation"
-docker compose exec app bash -lc "cd /var/www/html && php artisan test --filter SchemaManagement"
+docker compose exec app php artisan test --filter HealthCheck
+docker compose exec app php artisan test --filter Auth
 ```
 
 ## 🛠️ Development
 
-### Creating a New Module
-
-Use the module generator:
+### New module
 
 ```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan make:module {ModuleName} [--api-version=v1]"
+docker compose exec app php artisan make:module {ModuleName} [--api-version=v1]
 ```
 
-This scaffolds:
-- Module directory structure
-- Routes, controllers, services
-- Module service provider
-- Configuration file
+### Schema
 
-### Database Schema Management
+- **List**: `php artisan schema:list`
+- **Create**: `php artisan schema:create` (if used; `fetchit` is created by migrations)
+- **Check**: `php artisan schema:check`
 
-**Create schemas:**
+### Code quality
+
 ```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan schema:create"
-```
-
-**List schemas:**
-```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan schema:list"
-```
-
-**Check schema configuration:**
-```bash
-docker compose exec app bash -lc "cd /var/www/html && php artisan schema:check"
-```
-
-### Code Quality
-
-**Format code:**
-```bash
-docker compose exec app bash -lc "cd /var/www/html && ./vendor/bin/pint"
-```
-
-**Run static analysis:**
-```bash
-docker compose exec app bash -lc "cd /var/www/html && ./vendor/bin/phpstan analyze"
+docker compose exec app ./vendor/bin/pint
+docker compose exec app ./vendor/bin/phpstan analyze
 ```
 
 ## 📁 Project Structure
 
 ```
 fetchit-api/
-├── backend/                 # Laravel application
-│   ├── app/
-│   │   ├── Modules/         # Self-contained modules
-│   │   │   ├── HealthCheck/     # Health monitoring
-│   │   │   ├── DatabaseFoundation/  # Database migrations
-│   │   │   ├── SchemaManagement/    # Schema utilities
-│   │   │   ├── Customer/           # In development
-│   │   │   └── Tenancy/            # In development
-│   │   ├── Console/
-│   │   ├── Http/
-│   │   └── Providers/
+├── backend/                    # Laravel app
+│   ├── app/Modules/
+│   │   ├── Auth/               # Google OAuth, JWT
+│   │   ├── DBCore/              # Models, fetchit migrations
+│   │   ├── GmailAccounts/      # Gmail OAuth, link/unlink
+│   │   ├── GmailSync/          # Sync jobs, ParseEmailJob
+│   │   ├── HealthCheck/
+│   │   ├── Orders/
+│   │   ├── SchemaMgr/
+│   │   └── Shared/
 │   ├── config/
-│   ├── database/
-│   ├── docs/                # Architecture documentation
 │   ├── routes/
-│   └── tests/
-├── docker/                  # Docker configuration files
-│   ├── nginx/               # Nginx configuration
-│   │   └── conf.d/
-│   │       └── default.conf
-│   ├── keycloak/              # Keycloak configuration
-│   │   ├── init-keycloak-db.sh
-│   │   ├── keycloak-entrypoint.sh
-│   │   └── keycloak-init.sh
-│   ├── localstack/            # LocalStack configuration
-│   │   ├── init-localstack-secrets.sh
-│   │   ├── localstack-startup.sh
-│   │   ├── manage-localstack-secrets.sh
-│   │   └── populate-secrets-from-env.sh
-│   └── minio/                 # MinIO configuration
-│       └── init-minio-bucket.sh
-├── docs/                    # Project documentation
-├── docker-compose.yml       # Docker Compose configuration
-├── Dockerfile              # PHP-FPM container definition
-├── Makefile                # Development shortcuts
-└── README.md               # This file
+│   └── bootstrap/
+│       ├── app.php
+│       └── secrets.php         # AWS Secrets Manager (LocalStack in dev)
+├── parser-service/             # Node.js email parser
+│   ├── server.js
+│   ├── src/parsers/
+│   └── README.md
+├── docker/
+│   ├── start-all-services.sh
+│   ├── stop-all-services.sh
+│   ├── restart-all-services.sh
+│   ├── localstack/
+│   ├── nginx/
+│   ├── postgres/
+│   ├── php/
+│   ├── redis/
+│   └── supervisor/
+├── docker-compose.yml
+├── Dockerfile
+└── README.md
 ```
 
-## 🔧 Additional Services
+## 🔧 Configuration
 
-### WebSockets via Soketi
+### Google OAuth
 
-- `soketi` is Pusher-compatible and exposed on port `6001`
-- Laravel config matches: `PUSHER_APP_ID=local-app`, `PUSHER_APP_KEY=local-key`, `PUSHER_APP_SECRET=local-secret`
-- Nginx forwards `/app/*` requests to `soketi:6001`
+In `backend/.env`:
 
-### MinIO Integration
+```env
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
+```
 
-- Service: `minio` (port 9000 S3 API, 9001 console)
-- Laravel `.env` uses `FILESYSTEM_DISK=s3` and AWS-style keys/endpoint pointing at MinIO
-- Create bucket: `./docker/minio/init-minio-bucket.sh fetchit-bucket`
+### Parser service
 
-### Logging & Observability
+```env
+PARSER_SERVICE_URL=http://parser:3000
+```
 
-- Laravel logs to `backend/storage/logs` (inside `app` container)
-- Container logs: `docker compose logs -f app`
-- Elasticsearch runs in single-node mode for local dev
-- Health check logs stored in `customer_portal.health_check_logs` table
+Run the parser separately (see `parser-service/README.md`); in Docker you can add a `parser` service and point this URL to it.
 
-### Queues & Scheduler
+### JWT
 
-- **Queue**: Runs `php artisan queue:work --verbose --tries=3 --timeout=90`
-- **Scheduler**: Runs `php artisan schedule:run --verbose --no-interaction` every 60 seconds
+`config/jwt.php` and `JWT_SECRET` in `.env` (from `php artisan jwt:secret` or manual).
+
+### Secrets (LocalStack)
+
+- `bootstrap/secrets.php` loads from AWS Secrets Manager.
+- Local: endpoint `http://localstack:4566`, secret e.g. `fetchit/dev`.
+- If Secrets Manager is unavailable, the app falls back to `.env` (see `bootstrap/secrets.php`).
 
 ## 🐛 Debugging
 
-- **Shell into app container:**
-  ```bash
-  docker compose exec app bash
-  ```
-
-- **Check Laravel logs:**
-  ```bash
-  docker compose exec app bash -lc "cd /var/www/html && tail -f storage/logs/laravel.log"
-  ```
-
-- **Check service health:**
-  ```bash
-  docker compose ps
-  docker compose logs SERVICE_NAME
-  ```
-
-- **Check database schemas:**
-  ```bash
-  docker compose exec app bash -lc "cd /var/www/html && php artisan schema:list --tables"
-  ```
-
-## 🤝 Contributing
-
-1. Create a feature branch from `dev`
-2. Make your changes following the module structure
-3. Write tests for new functionality
-4. Ensure all tests pass
-5. Update documentation
-6. Submit a merge request
+- **Shell**: `docker compose exec app bash`
+- **Logs**: `docker compose exec app tail -f storage/logs/laravel.log`
+- **Services**: `docker compose ps` and `docker compose logs SERVICE`
 
 ## 📝 License
 

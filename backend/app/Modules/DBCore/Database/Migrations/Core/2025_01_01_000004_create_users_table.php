@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 /**
  * Users Table Migration
  *
- * Creates the users table in the fetchit schema for FetchIt application:
+ * Creates the users table in the public schema for FetchIt application:
  * - Incremental ID as primary key (BIGINT)
  * - UUID as unique identifier
  * - Google OAuth fields
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Config;
  * - Soft deletes
  * - Global email uniqueness constraint
  *
- * Schema: fetchit
+ * Schema: public
  * Purpose: User accounts for FetchIt application
  */
 return new class extends Migration {
@@ -26,9 +26,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
 
-        // Create users table in fetchit schema
+        // Create users table in public schema
         SchemaHelper::createInSchema($fetchitSchema, 'users', function (Blueprint $table) use ($fetchitSchema) {
             $table->id()->comment('Incremental primary key');
 
@@ -84,7 +84,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
         SchemaHelper::dropFromSchema($fetchitSchema, 'users');
     }
 };

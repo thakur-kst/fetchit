@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Config;
  * Stores parsed orders from Gmail emails.
  * Uses JSONB for flexible metadata and items storage.
  * 
- * Schema: fetchit
+ * Schema: public
  */
 return new class extends Migration {
     public function up(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
 
         SchemaHelper::createInSchema($fetchitSchema, 'orders', function (Blueprint $table) use ($fetchitSchema) {
             $table->uuid('id')->primary()->default(DB::raw('gen_random_uuid()'));
@@ -71,7 +71,7 @@ return new class extends Migration {
 
     public function down(): void
     {
-        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'fetchit');
+        $fetchitSchema = Config::get('dbcore.fetchit_schema', 'public');
         
         // Drop JSONB indexes first
         DB::statement("DROP INDEX IF EXISTS {$fetchitSchema}.idx_orders_metadata_replyto");

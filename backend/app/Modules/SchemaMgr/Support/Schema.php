@@ -28,7 +28,8 @@ class Schema
      */
     public static function createInSchema(string $schema, string $table, Closure $callback): void
     {
-        $fullTableName = $schema . '.' . $table;
+        // For 'public', use table name only so Laravel creates in search_path (public)
+        $fullTableName = ($schema === 'public') ? $table : $schema . '.' . $table;
         LaravelSchema::create($fullTableName, $callback);
     }
 
@@ -42,7 +43,7 @@ class Schema
      */
     public static function tableInSchema(string $schema, string $table, Closure $callback): void
     {
-        $fullTableName = $schema . '.' . $table;
+        $fullTableName = ($schema === 'public') ? $table : $schema . '.' . $table;
         LaravelSchema::table($fullTableName, $callback);
     }
 
@@ -55,7 +56,7 @@ class Schema
      */
     public static function dropFromSchema(string $schema, string $table): void
     {
-        $fullTableName = $schema . '.' . $table;
+        $fullTableName = ($schema === 'public') ? $table : $schema . '.' . $table;
         LaravelSchema::dropIfExists($fullTableName);
     }
 
@@ -68,7 +69,7 @@ class Schema
      */
     public static function hasTableInSchema(string $schema, string $table): bool
     {
-        $fullTableName = $schema . '.' . $table;
+        $fullTableName = ($schema === 'public') ? $table : $schema . '.' . $table;
         return LaravelSchema::hasTable($fullTableName);
     }
 

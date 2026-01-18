@@ -5,16 +5,19 @@ namespace Modules\GmailAccounts\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\GmailAccounts\Http\Resources\GmailAccountResource;
 use Modules\GmailAccounts\Models\GmailAccount;
 use Modules\GmailAccounts\Services\GmailOAuthService;
 use Modules\GmailAccounts\Services\GmailTokenService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-
+use Dedoc\Scramble\Attributes\Response;
 /**
  * Gmail Account Controller
- * 
- * Handles Gmail account linking and management.
+ *
+ * Handles Gmail account linking, OAuth flow, and token management.
+ *
+ * @tags Gmail
  */
 class GmailAccountController extends Controller
 {
@@ -26,9 +29,15 @@ class GmailAccountController extends Controller
 
     /**
      * Get Gmail OAuth authorization URL
-     * 
-     * GET /api/gmail/auth/authorize
+     *
+     * Returns the URL to redirect the user to for Gmail OAuth consent. Requires Bearer token.
+     *
+     * @operationId gmailGetAuthUrl
+     * @tags Gmail
+     * @response 200 {"success": true, "data": {"url": "https://accounts.google.com/o/oauth2/v2/auth?client_id=123456789.apps.googleusercontent.com&redirect_uri=https://example.com/callback&response_type=code&scope=https://www.googleapis.com/auth/gmail.readonly&access_type=offline&state=abc123"}}
+     * @response 500 {"success": false, "error": "Failed to generate authorization URL"}
      */
+    #[Response(200, 'Gmail authorization URL generated successfully', type: 'array{success: bool, data: array{authUrl: string, state: string}}')]
     public function getAuthorizationUrl(Request $request): JsonResponse
     {
         try {
@@ -52,9 +61,15 @@ class GmailAccountController extends Controller
 
     /**
      * List user's Gmail accounts
-     * 
-     * GET /api/gmail/accounts
+     *
+     * Returns all Gmail accounts linked to the authenticated user.
+     *
+     * @operationId gmailAccountsIndex
+     * @tags Gmail
+     * @response 200 {"success": true, "data": [{"id": "660e8400-e29b-41d4-a716-446655440001", "email": "user@gmail.com", "displayName": "John Doe", "pictureUrl": "https://lh3.googleusercontent.com/a/default-user", "isActive": true, "tokenType": "Bearer", "scope": "https://www.googleapis.com/auth/gmail.readonly", "tokenExpiresAt": "2024-01-16T12:00:00Z", "lastSyncedAt": "2024-01-15T10:00:00Z", "createdAt": "2024-01-01T08:00:00Z"}]}
+     * @response 500 {"success": false, "error": "Failed to list Gmail accounts"}
      */
+    #[Response(200, 'Gmail accounts listed successfully', type: 'array{success: bool, data: array{id: string, email: string, displayName: string, pictureUrl: string, isActive: bool, tokenType: string, scope: string, tokenExpiresAt: string, lastSyncedAt: string, createdAt: string}}')]
     public function index(Request $request): JsonResponse
     {
         try {
@@ -64,20 +79,7 @@ class GmailAccountController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => $accounts->map(function ($account) {
-                    return [
-                        'id' => $account->id,
-                        'email' => $account->email,
-                        'displayName' => $account->display_name,
-                        'pictureUrl' => $account->picture_url,
-                        'isActive' => $account->is_active,
-                        'tokenType' => $account->token_type,
-                        'scope' => $account->scope,
-                        'tokenExpiresAt' => $account->token_expires_at?->toIso8601String(),
-                        'lastSyncedAt' => $account->last_synced_at?->toIso8601String(),
-                        'createdAt' => $account->created_at->toIso8601String(),
-                    ];
-                }),
+                'data' => GmailAccountResource::collection($accounts),
             ]);
         } catch (\Exception $e) {
             Log::error('Error listing Gmail accounts', [
@@ -93,9 +95,20 @@ class GmailAccountController extends Controller
 
     /**
      * Link Gmail account
-     * 
-     * POST /api/gmail/accounts
+     *
+     * Exchanges OAuth authorization code for tokens and links the Gmail account. Body: code, scope, email, displayName (optional), pictureUrl (optional).
+     *
+     * @operationId gmailAccountsStore
+     * @tags Gmail
+     * @response 200 {"success": true, "message": "Gmail account linked successfully", "data": {"id": "660e8400-e29b-41d4-a716-446655440001", "email": "user@gmail.com", "displayName": "John Doe", "isActive": true, "createdAt": "2024-01-01T08:00:00Z"}}
+     * @response 201 {"success": true, "message": "Gmail account linked successfully", "data": {"id": "660e8400-e29b-41d4-a716-446655440001", "email": "user@gmail.com", "displayName": "John Doe", "isActive": true, "createdAt": "2024-01-01T08:00:00Z"}}
+     * @response 400 {"success": false, "error": "Failed to exchange authorization code"}
+     * @response 500 {"success": false, "error": "Failed to link Gmail account"}
      */
+    #[Response(200, 'Gmail account linked successfully', type: 'array{success: bool, message: string, data: array{id: string, email: string, displayName: string, isActive: bool, createdAt: string}}')]
+    #[Response(201, 'Gmail account linked successfully', type: 'array{success: bool, message: string, data: array{id: string, email: string, displayName: string, isActive: bool, createdAt: string}}')]
+    #[Response(400, 'Failed to exchange authorization code', type: 'array{success: bool, error: string}')]
+    #[Response(500, 'Failed to link Gmail account', type: 'array{success: bool, error: string}')]
     public function store(Request $request): JsonResponse
     {
         $request->validate([
@@ -141,13 +154,7 @@ class GmailAccountController extends Controller
                     return response()->json([
                         'success' => true,
                         'message' => 'Gmail account linked successfully',
-                        'data' => [
-                            'id' => $existingAccount->id,
-                            'email' => $existingAccount->email,
-                            'displayName' => $existingAccount->display_name,
-                            'isActive' => $existingAccount->is_active,
-                            'createdAt' => $existingAccount->created_at->toIso8601String(),
-                        ],
+                        'data' => new GmailAccountResource($existingAccount),
                     ], 200);
                 }
 
@@ -170,13 +177,7 @@ class GmailAccountController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'Gmail account linked successfully',
-                    'data' => [
-                        'id' => $account->id,
-                        'email' => $account->email,
-                        'displayName' => $account->display_name,
-                        'isActive' => $account->is_active,
-                        'createdAt' => $account->created_at->toIso8601String(),
-                    ],
+                    'data' => new GmailAccountResource($account),
                 ], 201);
             });
         } catch (\Exception $e) {
@@ -194,9 +195,18 @@ class GmailAccountController extends Controller
 
     /**
      * Delete Gmail account
-     * 
-     * DELETE /api/gmail/accounts/{accountId}
+     *
+     * Unlinks and deletes the Gmail account for the authenticated user.
+     *
+     * @operationId gmailAccountsDestroy
+     * @tags Gmail
+     * @response 200 {"success": true, "message": "Gmail account unlinked successfully", "data": {"id": "660e8400-e29b-41d4-a716-446655440001"}}
+     * @response 404 {"success": false, "error": "Gmail account not found"}
+     * @response 500 {"success": false, "error": "Failed to unlink Gmail account"}
      */
+    #[Response(200, 'Gmail account unlinked successfully', type: 'array{success: bool, message: string, data: array{id: string}}')]
+    #[Response(404, 'Gmail account not found', type: 'array{success: bool, error: string}')]
+    #[Response(500, 'Failed to unlink Gmail account', type: 'array{success: bool, error: string}')]
     public function destroy(Request $request, string $accountId): JsonResponse
     {
         try {
@@ -232,9 +242,20 @@ class GmailAccountController extends Controller
 
     /**
      * Refresh Gmail access token
-     * 
-     * POST /api/gmail/accounts/{accountId}/refresh
+     *
+     * Ensures the Gmail account has a valid access token, refreshing if needed. Returns current token info.
+     *
+     * @operationId gmailAccountsRefresh
+     * @tags Gmail
+     * @response 200 {"success": true, "data": {"accessToken": "ya29.a0AfH6SMC...", "expiresIn": 3600, "tokenType": "Bearer", "expiresAt": "2024-01-16T12:00:00Z"}}
+     * @response 400 {"success": false, "error": "Failed to refresh token"}
+     * @response 404 {"success": false, "error": "Gmail account not found"}
+     * @response 500 {"success": false, "error": "Failed to refresh token"}
      */
+    #[Response(200, 'Gmail token refreshed successfully', type: 'array{success: bool, data: array{accessToken: string, expiresIn: int, tokenType: string, expiresAt: string}}')]
+    #[Response(400, 'Failed to refresh token', type: 'array{success: bool, error: string}')]
+    #[Response(404, 'Gmail account not found', type: 'array{success: bool, error: string}')]
+    #[Response(500, 'Failed to refresh token', type: 'array{success: bool, error: string}')]
     public function refreshToken(Request $request, string $accountId): JsonResponse
     {
         try {
